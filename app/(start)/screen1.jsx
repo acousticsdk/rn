@@ -94,7 +94,7 @@ export default function Screen1() {
             style={styles.devButton} 
             onPress={() => router.push('/(profile)')}
           >
-            <Text style={styles.devButtonText}>DEV: Профиль мастера</Text>
+            <Text style={styles.devButtonText}>Профиль</Text>
           </TouchableOpacity>
 
           {/* Техническая кнопка для чата */}
@@ -102,7 +102,15 @@ export default function Screen1() {
             style={[styles.devButton, { bottom: 70 }]} 
             onPress={() => router.push('/(chat)')}
           >
-            <Text style={styles.devButtonText}>DEV: Чат</Text>
+            <Text style={styles.devButtonText}>Чат</Text>
+          </TouchableOpacity>
+
+          {/* Кнопка Главная */}
+          <TouchableOpacity 
+            style={[styles.devButton, { bottom: 120 }]} 
+            onPress={() => router.push('/(homepage)/master')}
+          >
+            <Text style={styles.devButtonText}>Главная</Text>
           </TouchableOpacity>
         </View>
       </View>

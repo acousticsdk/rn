@@ -390,7 +390,7 @@ const styles = StyleSheet.create({
     gap: 15,
   },
   categoryColumn: {
-    width: '22%',
+    width: '23%',
     alignItems: 'center',
     gap: 12,
     marginBottom: 20,
@@ -406,8 +406,8 @@ const styles = StyleSheet.create({
     borderColor: '#333333',
   },
   selectedCategory: {
-    backgroundColor: 'rgb(15, 15, 15)',
-    borderColor: '#0066FF',
+    backgroundColor: '#0B5BFE',
+    borderColor: '#333333',
   },
   categoryText: {
     color: '#FFFFFF',

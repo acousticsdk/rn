@@ -220,7 +220,6 @@ const styles = StyleSheet.create({
   blockValueGradient: {
     borderRadius: 25,
     paddingVertical: 15,
-    paddingHorizontal: 20,
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',

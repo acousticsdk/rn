@@ -12,7 +12,7 @@ import {
   Dimensions
 } from 'react-native';
 import { router } from 'expo-router';
-import { Search, Heart, Calendar, Video, Palette, Play, Zap, ChevronDown, ChevronUp, Star } from 'lucide-react-native';
+import { Search, Heart, Calendar, Video, Palette, Play, Zap, ChevronDown, ChevronUp, Star, MessageCircle, Camera, Code } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const { width: screenWidth } = Dimensions.get('window');
@@ -58,7 +58,11 @@ const CATEGORIES = [
   { id: 'scenario', title: 'Сценарий', icon: Calendar },
   { id: 'montage', title: 'Монтаж', icon: Video },
   { id: 'design', title: 'Дизайн', icon: Palette },
-  { id: 'shooting', title: 'Съемка', icon: Play }
+  { id: 'shooting', title: 'Съемка', icon: Play },
+  { id: 'smm', title: 'SMM', icon: MessageCircle },
+  { id: 'ads', title: 'Реклама', icon: Zap },
+  { id: 'photo', title: 'Для Съемки', icon: Camera },
+  { id: 'it', title: 'IT', icon: Code }
 ];
 
 const TABS = [
@@ -222,34 +226,14 @@ export default function MarketplaceScreen() {
           </View>
 
           {/* Categories Section */}
-          <TouchableOpacity 
-            style={styles.categoriesHeader}
-            onPress={() => setShowCategories(!showCategories)}
-          >
-            <Text style={styles.categoriesTitle}>Выбрать категорию</Text>
-            <ChevronDown size={20} color="#FFFFFF" />
-          </TouchableOpacity>
-
-          {/* Categories Grid */}
-          <View style={styles.categoriesContainer}>
-            {CATEGORIES.map((category) => {
-              const IconComponent = category.icon;
-              return (
-                <TouchableOpacity
-                  key={category.id}
-                  style={[
-                    styles.categoryItem,
-                    selectedCategory === category.id && styles.selectedCategory
-                  ]}
-                  onPress={() => handleCategorySelect(category.id)}
-                >
-                  <View style={styles.categoryIcon}>
-                    <IconComponent size={20} color="#FFFFFF" />
-                  </View>
-                  <Text style={styles.categoryText}>{category.title}</Text>
-                </TouchableOpacity>
-              );
-            })}
+          <View style={styles.categoriesSection}>
+            <TouchableOpacity 
+              style={styles.categoriesHeader}
+              onPress={() => setShowCategories(!showCategories)}
+            >
+              <Text style={styles.categoriesTitle}>Выбрать категорию</Text>
+              <ChevronDown size={20} color="#FFFFFF" />
+            </TouchableOpacity>
           </View>
 
           {/* AI Team Builder Button */}
@@ -373,43 +357,36 @@ const styles = StyleSheet.create({
     fontFamily: 'Codec-Pro-Bold',
   },
   categoriesContainer: {
+    flexDirection: 'row',
     paddingHorizontal: 24,
     marginBottom: 20,
-  },
-  categoriesGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 16,
-  },
-  categoryWrapper: {
-    width: (screenWidth - 48 - 48) / 4, // (screenWidth - padding - gaps) / 4
-    alignItems: 'center',
-    gap: 8,
+    gap: 12,
   },
   categoryItem: {
     flex: 1,
     backgroundColor: '#1a1a1a',
     borderRadius: 15,
-    paddingVertical: 15,
+    paddingVertical: 20,
     alignItems: 'center',
-    gap: 10,
+    gap: 8,
     borderWidth: 1,
     borderColor: '#333333',
-    minHeight: 80,
   },
   selectedCategory: {
     backgroundColor: '#0066FF',
     borderColor: '#0066FF',
   },
   categoryIcon: {
-    width: 32,
-    height: 32,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#0066FF',
     alignItems: 'center',
     justifyContent: 'center',
   },
   categoryText: {
     color: '#FFFFFF',
-    fontSize: 11,
+    fontSize: 12,
     fontFamily: 'Codec-Pro-Bold',
     textAlign: 'center',
   },

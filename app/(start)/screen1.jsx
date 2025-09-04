@@ -88,26 +88,26 @@ export default function Screen1() {
           <View style={styles.buttonContainer}>
             <Button title="ПРОДОЛЖИТЬ" onPress={handleContinue} variant="rounded" />
           </View>
+        </View>
 
-          {/* Техническая кнопка для разработки */}
+        {/* Технические кнопки для разработки */}
+        <View style={styles.devButtonsContainer}>
           <TouchableOpacity 
             style={styles.devButton} 
             onPress={() => router.push('/(profile)')}
           >
             <Text style={styles.devButtonText}>Профиль</Text>
           </TouchableOpacity>
-
-          {/* Техническая кнопка для чата */}
+          
           <TouchableOpacity 
-            style={[styles.devButton, { bottom: 70 }]} 
+            style={styles.devButton} 
             onPress={() => router.push('/(chat)')}
           >
             <Text style={styles.devButtonText}>Чат</Text>
           </TouchableOpacity>
-
-          {/* Кнопка Главная */}
+          
           <TouchableOpacity 
-            style={[styles.devButton, { bottom: 120 }]} 
+            style={styles.devButton} 
             onPress={() => router.push('/(homepage)/master')}
           >
             <Text style={styles.devButtonText}>Главная</Text>
@@ -144,10 +144,17 @@ const styles = StyleSheet.create({
   subtitle: { color: '#787878', fontSize: 16, fontWeight: '400', textAlign: 'center', lineHeight: 20, fontFamily: 'Codec-Pro-Light', marginTop: 30, marginBottom: 64 },
   subtitle: { color: '#787878', fontSize: 16, fontWeight: '400', textAlign: 'center', lineHeight: 20, fontFamily: 'Codec-Pro-Bold', marginTop: 30, marginBottom: 64 },
   buttonContainer: { width: '100%', maxWidth: 320, paddingBottom: 32 },
-  devButton: {
+  devButtonsContainer: {
     position: 'absolute',
     bottom: 20,
+    left: 20,
     right: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 10,
+  },
+  devButton: {
+    flex: 1,
     backgroundColor: 'rgba(255, 0, 0, 0.7)',
     paddingHorizontal: 12,
     paddingVertical: 8,
@@ -159,5 +166,6 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 12,
     fontFamily: 'Codec-Pro-Bold',
+    textAlign: 'center',
   },
 });

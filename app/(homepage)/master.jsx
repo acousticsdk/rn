@@ -64,7 +64,8 @@ export default function MasterHomepage() {
   const [avatarUrl] = useState(HOMEPAGE_AVATAR_URL);
 
   const handleBuildTeam = () => {
-    router.push('/(tabs)/marketplace');
+    // TODO: Логика сбора команды (не маркетплейс)
+    console.log('Собрать команду');
   };
 
   const handleTabPress = (tabName) => {
@@ -76,8 +77,7 @@ export default function MasterHomepage() {
         router.push('/(chat)');
         break;
       case 'marketplace':
-        // TODO: Переход на маркетплейс
-        console.log('Маркетплейс');
+        router.push('/(tabs)/marketplace');
         break;
       case 'wallet':
         // TODO: Переход на кошелек

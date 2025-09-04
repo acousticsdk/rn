@@ -255,6 +255,10 @@ export default function MarketplaceScreen() {
     </SafeAreaView>
   );
 }
+      </View>
+    </SafeAreaView>
+  );
+}
 
 const styles = StyleSheet.create({
   safeArea: {

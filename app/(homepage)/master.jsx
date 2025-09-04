@@ -78,7 +78,7 @@ export default function MasterHomepage() {
             {/* Right Block - Invited/Earnings */}
             <View style={styles.statsBlock}>
               <View style={styles.firstEarningsPlaque}>
-                <Text style={styles.blockValueText}>Приглашено: 1 друг</Text>
+                <Text style={styles.firstEarningsText}>Приглашено: 1 друг</Text>
               </View>
               <LinearGradient
                 colors={['#0066FF', '#4A9EFF']}
@@ -236,6 +236,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#131313',
     borderWidth: 1,
     borderColor: '#333333',
+  },
+  firstEarningsText: {
+    color: '#8C8C8C',
+    fontSize: 11,
+    fontFamily: 'Codec-Pro-Bold',
+    textAlign: 'center',
   },
   buildTeamContainer: {
     paddingHorizontal: 24,

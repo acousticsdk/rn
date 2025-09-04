@@ -63,7 +63,7 @@ export default function TabLayout() {
         name="marketplace"
         options={{
           title: 'Маркет',
-          href: null, // Отключаем пока в разработке
+          href: '/(marketplace)',
           tabBarIcon: ({ size, color }) => (
             <Store size={size} color={color} />
           ),

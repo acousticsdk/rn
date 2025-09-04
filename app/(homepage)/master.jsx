@@ -64,7 +64,8 @@ export default function MasterHomepage() {
   const [avatarUrl] = useState(HOMEPAGE_AVATAR_URL);
 
   const handleBuildTeam = () => {
-    // TODO: Логика сбора команды (не маркетплейс)
+    // Переходим на маркетплейс для сбора команды
+    router.push('/(marketplace)');
     console.log('Собрать команду');
   };
 

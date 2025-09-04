@@ -156,7 +156,6 @@ export default function MasterHomepage() {
             onPress={() => handleTabPress('home')}
           >
             <Home size={24} color="#0066FF" />
-            <Text style={[styles.tabLabel, styles.activeTabLabel]}>Главная</Text>
           </TouchableOpacity>
 
           {/* Chat Tab */}
@@ -165,7 +164,6 @@ export default function MasterHomepage() {
             onPress={() => handleTabPress('chat')}
           >
             <MessageCircle size={24} color="#666666" />
-            <Text style={styles.tabLabel}>Чат</Text>
           </TouchableOpacity>
 
           {/* Marketplace Tab */}
@@ -174,7 +172,6 @@ export default function MasterHomepage() {
             onPress={() => handleTabPress('marketplace')}
           >
             <Store size={24} color="#666666" />
-            <Text style={styles.tabLabel}>Маркет</Text>
           </TouchableOpacity>
 
           {/* Wallet Tab */}
@@ -183,7 +180,6 @@ export default function MasterHomepage() {
             onPress={() => handleTabPress('wallet')}
           >
             <Wallet size={24} color="#666666" />
-            <Text style={styles.tabLabel}>Кошелек</Text>
           </TouchableOpacity>
 
           {/* Profile Tab */}
@@ -192,7 +188,6 @@ export default function MasterHomepage() {
             onPress={() => handleTabPress('profile')}
           >
             <User size={24} color="#666666" />
-            <Text style={styles.tabLabel}>Профиль</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -399,15 +394,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-  },
-  tabLabel: {
-    fontSize: 11,
-    fontFamily: 'Codec-Pro-Bold',
-    marginTop: 4,
-    color: '#666666',
-  },
-  activeTabLabel: {
-    color: '#0066FF',
   },
   teamLabel: {
     color: '#787878',

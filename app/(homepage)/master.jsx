@@ -7,7 +7,8 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
-  Dimensions
+  Dimensions,
+  ImageBackground
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
@@ -90,8 +91,13 @@ export default function MasterHomepage() {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <ImageBackground 
+      source={{ uri: 'https://alfacta.online/100k/main-bg.png' }}
+      style={styles.backgroundImage}
+      resizeMode="cover"
+    >
+      <SafeAreaView style={styles.safeArea}>
+        <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         {/* Header */}
         <View style={styles.header}>
           <View style={styles.titleContainer}>
@@ -175,64 +181,71 @@ export default function MasterHomepage() {
         </View>
 
         <View style={styles.bottomSpacing} />
-      </ScrollView>
+        </ScrollView>
 
-      {/* Floating Tab Bar */}
-      <View style={styles.floatingTabBar}>
-        <View style={styles.tabBarContainer}>
-          {/* Home Tab */}
-          <TouchableOpacity 
-            style={styles.tabItem}
-            onPress={() => handleTabPress('home')}
-          >
-            <HomeIcon size={24} color="#0066FF" />
-          </TouchableOpacity>
+        {/* Floating Tab Bar */}
+        <View style={styles.floatingTabBar}>
+          <View style={styles.tabBarContainer}>
+            {/* Home Tab */}
+            <TouchableOpacity 
+              style={styles.tabItem}
+              onPress={() => handleTabPress('home')}
+            >
+              <HomeIcon size={24} color="#0066FF" />
+            </TouchableOpacity>
 
-          {/* Chat Tab */}
-          <TouchableOpacity 
-            style={styles.tabItem}
-            onPress={() => handleTabPress('chat')}
-          >
-            <ChatIcon size={24} color="#666666" />
-          </TouchableOpacity>
+            {/* Chat Tab */}
+            <TouchableOpacity 
+              style={styles.tabItem}
+              onPress={() => handleTabPress('chat')}
+            >
+              <ChatIcon size={24} color="#666666" />
+            </TouchableOpacity>
 
-          {/* Marketplace Tab */}
-          <TouchableOpacity 
-            style={styles.tabItem}
-            onPress={() => handleTabPress('marketplace')}
-          >
-            <MarketplaceIcon size={24} color="#666666" />
-          </TouchableOpacity>
+            {/* Marketplace Tab */}
+            <TouchableOpacity 
+              style={styles.tabItem}
+              onPress={() => handleTabPress('marketplace')}
+            >
+              <MarketplaceIcon size={24} color="#666666" />
+            </TouchableOpacity>
 
-          {/* Wallet Tab */}
-          <TouchableOpacity 
-            style={styles.tabItem}
-            onPress={() => handleTabPress('wallet')}
-          >
-            <WalletIcon size={24} color="#666666" />
-          </TouchableOpacity>
+            {/* Wallet Tab */}
+            <TouchableOpacity 
+              style={styles.tabItem}
+              onPress={() => handleTabPress('wallet')}
+            >
+              <WalletIcon size={24} color="#666666" />
+            </TouchableOpacity>
 
-          {/* Profile Tab */}
-          <TouchableOpacity 
-            style={styles.tabItem}
-            onPress={() => handleTabPress('profile')}
-          >
-            <ProfileIcon size={24} color="#666666" />
-          </TouchableOpacity>
+            {/* Profile Tab */}
+            <TouchableOpacity 
+              style={styles.tabItem}
+              onPress={() => handleTabPress('profile')}
+            >
+              <ProfileIcon size={24} color="#666666" />
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#070707',
+  },
   safeArea: {
     flex: 1,
-    backgroundColor: '#070707',
+    backgroundColor: 'transparent',
   },
   container: {
     flex: 1,
-    backgroundColor: '#070707',
+    backgroundColor: 'transparent',
   },
   header: {
     alignItems: 'center',

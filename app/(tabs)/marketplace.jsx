@@ -240,51 +240,6 @@ export default function MarketplaceScreen() {
                   style={[
                     styles.categoryItem,
                     selectedCategory === category.id && styles.selectedCategory
-                  ]}
-                  onPress={() => handleCategorySelect(category.id)}
-                >
-                  <View style={styles.categoryIcon}>
-                    <IconComponent size={24} color="#FFFFFF" />
-                  </View>
-                  <Text style={styles.categoryText}>{category.title}</Text>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
-
-          {/* AI Team Builder Button */}
-          <TouchableOpacity 
-            style={styles.aiButton}
-            onPress={handleAITeamBuilder}
-          >
-            <LinearGradient
-              colors={['#0066FF', '#4A9EFF']}
-              style={styles.aiButtonGradient}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-            >
-              <Text style={styles.aiButtonText}>ИИ СБОР КОМАНДЫ</Text>
-              <Zap size={20} color="#FFFFFF" />
-            </LinearGradient>
-          </TouchableOpacity>
-
-          {/* Sections */}
-          {renderSection(
-            'ТОП 100К', 
-            top100kExpanded, 
-            () => setTop100kExpanded(!top100kExpanded),
-            MOCK_USERS
-          )}
-
-          {renderSection(
-            'РЕЙТИНГ', 
-            ratingExpanded, 
-            () => setRatingExpanded(!ratingExpanded),
-            MOCK_USERS
-          )}
-
-          <View style={styles.bottomSpacing} />
-        </ScrollView>
       </View>
     </SafeAreaView>
   );
@@ -527,35 +482,4 @@ const styles = StyleSheet.create({
   },
   userActions: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 8,
-  },
-  specializationTag: {
-    backgroundColor: '#333333',
-    borderRadius: 15,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    flex: 1,
-  },
-  specializationText: {
-    color: '#FFFFFF',
-    fontSize: 12,
-    fontFamily: 'Codec-Pro-Bold',
-    textAlign: 'center',
-  },
-  hireButton: {
-    backgroundColor: '#0066FF',
-    borderRadius: 15,
-    paddingHorizontal: 16,
-    paddingVertical: 6,
-  },
-  hireButtonText: {
-    color: '#FFFFFF',
-    fontSize: 12,
-    fontFamily: 'Codec-Pro-Bold',
-  },
-  bottomSpacing: {
-    height: 100, // Отступ для floating tab bar
-  },
 });

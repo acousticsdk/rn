@@ -432,7 +432,7 @@ const styles = StyleSheet.create({
   categoryItem: {
     width: '100%',
     aspectRatio: 1,
-    backgroundColor: '#1a1a1a',
+    backgroundColor: 'rgb(15, 15, 15)',
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',

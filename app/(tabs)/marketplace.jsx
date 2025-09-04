@@ -264,51 +264,6 @@ export default function MarketplaceScreen() {
               </View>
               
               {/* Второй ряд - показываем только при развернутых категориях */}
-              {showCategories && (
-                <View style={styles.categoriesRow}>
-                  {CATEGORIES.slice(4, 8).map((category) => (
-                    <TouchableOpacity
-                      key={category.id}
-                      style={styles.categoryColumn}
-                      onPress={() => handleCategorySelect(category.id)}
-                    >
-                      <View style={[
-                        styles.categoryItem,
-                        selectedCategory === category.id && styles.selectedCategory
-                      ]}>
-                        <category.icon 
-                          size={32} 
-                          color={selectedCategory === category.id ? "#0066FF" : "#FFFFFF"} 
-                        />
-                      </View>
-                      <Text style={[
-                        styles.categoryText,
-                        selectedCategory === category.id && styles.selectedCategoryText
-                      ]}>
-                        {category.title}
-                      </Text>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-              )}
-            </View>
-          </View>
-
-          {/* AI Team Builder Button */}
-          <TouchableOpacity style={styles.aiButton} onPress={handleAITeamBuilder}>
-            <LinearGradient
-              colors={['#0066FF', '#00CCFF']}
-              style={styles.aiButtonGradient}
-            >
-              <Zap size={20} color="#FFFFFF" />
-              <Text style={styles.aiButtonText}>ИИ сбор команды</Text>
-            </LinearGradient>
-          </TouchableOpacity>
-
-          {/* Sections */}
-          {renderSection('ТОП 100К', top100kExpanded, () => setTop100kExpanded(!top100kExpanded), MOCK_USERS)}
-          {renderSection('РЕЙТИНГ', ratingExpanded, () => setRatingExpanded(!ratingExpanded), MOCK_USERS)}
-        </ScrollView>
       </View>
     </SafeAreaView>
   );
@@ -562,35 +517,4 @@ const styles = StyleSheet.create({
   },
   userName: {
     color: '#FFFFFF',
-    fontSize: 18,
-    fontFamily: 'Codec-Pro-Bold',
-    marginBottom: 8,
-  },
-  userActions: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  specializationTag: {
-    backgroundColor: '#0066FF',
-    borderRadius: 12,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-  },
-  specializationText: {
-    color: '#FFFFFF',
-    fontSize: 12,
-    fontFamily: 'Codec-Pro-Bold',
-  },
-  hireButton: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-  },
-  hireButtonText: {
-    color: '#000000',
-    fontSize: 14,
-    fontFamily: 'Codec-Pro-Bold',
-  },
 });

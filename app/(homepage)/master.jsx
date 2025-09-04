@@ -66,42 +66,33 @@ export default function MasterHomepage() {
 
         {/* Stats Section */}
         <View style={styles.statsSection}>
-          <View style={styles.statsRow}>
-            {/* Team Count */}
-            <View style={styles.leftStatsContainer}>
-              <View style={styles.teamTitleCard}>
-                <Text style={styles.teamTitle}>Ваша команда:</Text>
-              </View>
-              
-              <LinearGradient
-                colors={['#0066FF', '#4A9EFF']}
-                style={styles.teamCountGradient}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 0 }}
-              >
-                <Text style={styles.teamCountText}>{teamCount} человек</Text>
-              </LinearGradient>
-            </View>
+          {/* Team Block */}
+          <View style={styles.statsBlock}>
+            <Text style={styles.blockLabel}>Ваша команда:</Text>
+            <LinearGradient
+              colors={['#0066FF', '#4A9EFF']}
+              style={styles.blockValueGradient}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+            >
+              <Text style={styles.blockValueText}>{teamCount} человек</Text>
+            </LinearGradient>
+          </View>
 
-            {/* Invited/Earnings Stats */}
-            <View style={styles.rightStatsContainer}>
-              <View style={styles.invitedTitleCard}>
-                <Text style={styles.invitedTitle}>Приглашено:</Text>
-                <Text style={styles.invitedValue}>{invitedCount} друг</Text>
-              </View>
-              
-              <View style={styles.earningsCard}>
-                <LinearGradient
-                  colors={['#0066FF', '#4A9EFF']}
-                  style={styles.earningsGradient}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 0 }}
-                >
-                  <Text style={styles.earningsLabel}>Заработано:</Text>
-                  <Text style={styles.earningsValue}>€ {earnings}</Text>
-                </LinearGradient>
-              </View>
+          {/* Invited/Earnings Block */}
+          <View style={styles.statsBlock}>
+            <View style={styles.blockRow}>
+              <Text style={styles.blockLabel}>Приглашено:</Text>
+              <Text style={styles.blockValue}>{invitedCount} друг</Text>
             </View>
+            <LinearGradient
+              colors={['#0066FF', '#4A9EFF']}
+              style={styles.blockValueGradient}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+            >
+              <Text style={styles.blockValueText}>Заработано: € {earnings}</Text>
+            </LinearGradient>
           </View>
         </View>
 
@@ -193,87 +184,43 @@ const styles = StyleSheet.create({
   statsSection: {
     paddingHorizontal: 24,
     marginBottom: 30,
-  },
-  statsRow: {
-    flexDirection: 'row',
     gap: 15,
   },
-  leftStatsContainer: {
-    flex: 1,
-    gap: 10,
-  },
-  teamTitleCard: {
+  statsBlock: {
     backgroundColor: '#1a1a1a',
     borderRadius: 20,
-    paddingHorizontal: 15,
-    paddingVertical: 12,
+    padding: 20,
     borderWidth: 1,
     borderColor: '#333333',
+    gap: 15,
   },
-  teamTitle: {
+  blockLabel: {
     color: '#787878',
-    fontSize: 12,
-    fontFamily: 'Codec-Pro-News',
-    textAlign: 'center',
+    fontSize: 16,
+    fontFamily: 'Codec-Pro-Bold',
   },
-  teamCountGradient: {
+  blockRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  blockValue: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontFamily: 'Codec-Pro-Bold',
+  },
+  blockValueGradient: {
     borderRadius: 25,
     paddingHorizontal: 20,
     paddingVertical: 15,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  teamCountText: {
+  blockValueText: {
     color: '#FFFFFF',
     fontSize: 16,
     fontFamily: 'Codec-Pro-Bold',
     textAlign: 'center',
-  },
-  rightStatsContainer: {
-    flex: 1,
-    gap: 10,
-  },
-  invitedTitleCard: {
-    backgroundColor: '#1a1a1a',
-    borderRadius: 20,
-    paddingHorizontal: 15,
-    paddingVertical: 12,
-    borderWidth: 1,
-    borderColor: '#333333',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  invitedTitle: {
-    color: '#787878',
-    fontSize: 12,
-    fontFamily: 'Codec-Pro-News',
-  },
-  invitedValue: {
-    color: '#FFFFFF',
-    fontSize: 12,
-    fontFamily: 'Codec-Pro-Bold',
-  },
-  earningsCard: {
-    borderRadius: 20,
-    overflow: 'hidden',
-  },
-  earningsGradient: {
-    paddingHorizontal: 15,
-    paddingVertical: 12,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  earningsLabel: {
-    color: '#FFFFFF',
-    fontSize: 12,
-    fontFamily: 'Codec-Pro-News',
-  },
-  earningsValue: {
-    color: '#FFFFFF',
-    fontSize: 12,
-    fontFamily: 'Codec-Pro-Bold',
   },
   buildTeamContainer: {
     paddingHorizontal: 24,

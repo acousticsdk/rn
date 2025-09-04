@@ -78,10 +78,12 @@ export default function MasterHomepage() {
           />
           {/* Greeting - moved to bottom left */}
           <View style={styles.greetingContainerBottomLeft}>
-            <View style={styles.greetingWrapper}>
-              <View style={styles.semiTransparentBackground}>
-                <Text style={styles.greeting}>Привет, {userName}!</Text>
-              </View>
+            <View style={styles.blurContainer}>
+              <BlurView intensity={20} style={styles.blurBackground}>
+                <View style={styles.greetingContent}>
+                  <Text style={styles.greeting}>Привет, {userName}!</Text>
+                </View>
+              </BlurView>
             </View>
           </View>
         </View>
@@ -247,14 +249,16 @@ const styles = StyleSheet.create({
     bottom: 20,
     left: 20,
   },
-  greetingWrapper: {
+  blurContainer: {
     borderRadius: 25,
     overflow: 'hidden',
   },
-  semiTransparentBackground: {
+  blurBackground: {
+    borderRadius: 25,
+  },
+  greetingContent: {
     paddingHorizontal: 30,
     paddingVertical: 15,
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
   },
   greeting: {
     color: '#FFFFFF',

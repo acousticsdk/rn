@@ -240,6 +240,33 @@ export default function MarketplaceScreen() {
                   style={[
                     styles.categoryItem,
                     selectedCategory === category.id && styles.selectedCategory
+                  ]}
+                  onPress={() => handleCategorySelect(category.id)}
+                >
+                  <View style={styles.categoryIcon}>
+                    <IconComponent size={20} color="#FFFFFF" />
+                  </View>
+                  <Text style={styles.categoryText}>{category.title}</Text>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+
+          {/* AI Team Builder Button */}
+          <TouchableOpacity style={styles.aiButton} onPress={handleAITeamBuilder}>
+            <LinearGradient
+              colors={['#0066FF', '#00CCFF']}
+              style={styles.aiButtonGradient}
+            >
+              <Zap size={20} color="#FFFFFF" />
+              <Text style={styles.aiButtonText}>ИИ сбор команды</Text>
+            </LinearGradient>
+          </TouchableOpacity>
+
+          {/* Sections */}
+          {renderSection('ТОП 100К', top100kExpanded, () => setTop100kExpanded(!top100kExpanded), MOCK_USERS)}
+          {renderSection('РЕЙТИНГ', ratingExpanded, () => setRatingExpanded(!ratingExpanded), MOCK_USERS)}
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
@@ -482,4 +509,29 @@ const styles = StyleSheet.create({
   },
   userActions: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  specializationTag: {
+    backgroundColor: '#0066FF',
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  specializationText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontFamily: 'Codec-Pro-Bold',
+  },
+  hireButton: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  hireButtonText: {
+    color: '#000000',
+    fontSize: 14,
+    fontFamily: 'Codec-Pro-Bold',
+  },
 });

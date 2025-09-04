@@ -393,7 +393,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     paddingHorizontal: 20,
     paddingTop: 15,
-    paddingBottom: 25,
+    paddingBottom: 15,
   },
   tabItem: {
     alignItems: 'center',

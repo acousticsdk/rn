@@ -71,25 +71,14 @@ export default function MasterHomepage() {
 
         {/* Main Card */}
         <View style={styles.mainCard}>
-          <LinearGradient
-            colors={['#4A9EFF', '#0066FF']}
-            style={styles.cardGradient}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-          >
-            {/* Avatar */}
-            <View style={styles.avatarContainer}>
-              <Image
-                source={{ uri: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400' }}
-                style={styles.avatar}
-              />
-            </View>
-
-            {/* Greeting - moved to bottom left */}
-            <View style={styles.greetingContainerBottomLeft}>
-              <Text style={styles.greeting}>Привет, {userName}!</Text>
-            </View>
-          </LinearGradient>
+          <Image
+            source={{ uri: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400' }}
+            style={styles.fullBlockAvatar}
+          />
+          {/* Greeting - moved to bottom left */}
+          <View style={styles.greetingContainerBottomLeft}>
+            <Text style={styles.greeting}>Привет, {userName}!</Text>
+          </View>
         </View>
 
         {/* Stats Section */}
@@ -234,23 +223,12 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     overflow: 'hidden',
     height: 300,
+    position: 'relative',
   },
-  cardGradient: {
-    flex: 1,
-    padding: 30,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  avatarContainer: {
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  avatar: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    borderWidth: 3,
-    borderColor: '#FFFFFF',
+  fullBlockAvatar: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
   },
   greetingContainer: {
     backgroundColor: 'rgba(0, 0, 0, 0.6)',

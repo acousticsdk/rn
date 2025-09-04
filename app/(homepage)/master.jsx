@@ -228,12 +228,11 @@ export default function MasterHomepage() {
         </View>
       </View>
     </SafeAreaView>
-  );
+  </ImageBackground>
+);
 }
 
 const styles = StyleSheet.create({
-          }
-  
   safeArea: {
     flex: 1,
     backgroundColor: '#070707',

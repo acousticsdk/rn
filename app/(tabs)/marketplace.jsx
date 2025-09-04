@@ -225,6 +225,57 @@ export default function MarketplaceScreen() {
               </TouchableOpacity>
             ))}
           </View>
+
+          {/* Categories Header */}
+          <View style={styles.categoriesHeader}>
+            <Text style={styles.categoriesTitle}>Категории</Text>
+            <TouchableOpacity onPress={() => setShowCategories(!showCategories)}>
+              {showCategories ? (
+                <ChevronUp size={20} color="#FFFFFF" />
+              ) : (
+                <ChevronDown size={20} color="#FFFFFF" />
+              )}
+            </TouchableOpacity>
+          </View>
+
+          {/* Categories Section */}
+          <View style={styles.categoriesSection}>
+            <View style={styles.categoriesContainer}>
+              <View style={styles.categoriesGrid}>
+                {categoriesToShow.map((category) => {
+                  const IconComponent = category.icon;
+                  const isSelected = selectedCategory === category.id;
+                  
+                  return (
+                    <View key={category.id} style={styles.categoryColumn}>
+                      <TouchableOpacity
+                        style={[
+                          styles.categoryItem,
+                          isSelected && styles.selectedCategory
+                        ]}
+                        onPress={() => handleCategorySelect(category.id)}
+                      >
+                        <IconComponent 
+                          size={24} 
+                          color={isSelected ? "#0066FF" : "#FFFFFF"} 
+                        />
+                      </TouchableOpacity>
+                      <Text style={[
+                        styles.categoryText,
+                        isSelected && styles.selectedCategoryText
+                      ]}>
+                        {category.title}
+                      </Text>
+                    </View>
+                  );
+                })}
+              </View>
+            </View>
+          </View>
+
+          {/* Sections */}
+          {renderSection('ТОП 100К', top100kExpanded, () => setTop100kExpanded(!top100kExpanded), MOCK_USERS)}
+          {renderSection('РЕЙТИНГ', ratingExpanded, () => setRatingExpanded(!ratingExpanded), MOCK_USERS)}
         </ScrollView>
       </View>
     </SafeAreaView>

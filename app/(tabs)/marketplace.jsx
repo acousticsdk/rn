@@ -264,6 +264,9 @@ export default function MarketplaceScreen() {
               </View>
               
               {/* Второй ряд - показываем только при развернутых категориях */}
+            </View>
+          </View>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
@@ -517,4 +520,5 @@ const styles = StyleSheet.create({
   },
   userName: {
     color: '#FFFFFF',
+  },
 });

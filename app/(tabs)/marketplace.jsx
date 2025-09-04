@@ -93,7 +93,6 @@ export default function MarketplaceScreen() {
   const handleCategorySelect = (categoryId) => {
     setSelectedCategory(categoryId);
     MARKETPLACE_SELECTED_CATEGORY = categoryId;
-    setShowCategories(false);
   };
 
   const handleHireUser = (userId) => {
@@ -176,6 +175,8 @@ export default function MarketplaceScreen() {
     </View>
   );
 
+  const categoriesToShow = showCategories ? CATEGORIES : CATEGORIES.slice(0, 4);
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -236,9 +237,8 @@ export default function MarketplaceScreen() {
             </TouchableOpacity>
 
             <View style={styles.categoriesContainer}>
-              {/* Первый ряд - всегда показываем */}
-              <View style={styles.categoriesRow}>
-                {CATEGORIES.slice(0, 4).map((category) => (
+              <View style={styles.categoriesGrid}>
+                {categoriesToShow.map((category) => (
                   <TouchableOpacity
                     key={category.id}
                     style={styles.categoryColumn}
@@ -262,10 +262,12 @@ export default function MarketplaceScreen() {
                   </TouchableOpacity>
                 ))}
               </View>
-              
-              {/* Второй ряд - показываем только при развернутых категориях */}
             </View>
           </View>
+
+          {/* Sections */}
+          {renderSection('ТОП 100К', top100kExpanded, () => setTop100kExpanded(!top100kExpanded), MOCK_USERS)}
+          {renderSection('РЕЙТИНГ', ratingExpanded, () => setRatingExpanded(!ratingExpanded), MOCK_USERS)}
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -377,17 +379,18 @@ const styles = StyleSheet.create({
   },
   categoriesContainer: {
     paddingHorizontal: 24,
-    gap: 20,
   },
-  categoriesRow: {
+  categoriesGrid: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
     gap: 15,
   },
   categoryColumn: {
-    flex: 1,
+    width: '22%',
     alignItems: 'center',
     gap: 12,
+    marginBottom: 20,
   },
   categoryItem: {
     width: '100%',
@@ -400,19 +403,8 @@ const styles = StyleSheet.create({
     borderColor: '#333333',
   },
   selectedCategory: {
-    backgroundColor: '#0066FF',
+    backgroundColor: 'rgb(15, 15, 15)',
     borderColor: '#0066FF',
-  },
-  categoryIcon: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: 'rgba(0, 102, 255, 0.2)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  selectedCategoryIcon: {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
   },
   categoryText: {
     color: '#FFFFFF',
@@ -422,24 +414,6 @@ const styles = StyleSheet.create({
   },
   selectedCategoryText: {
     color: '#0066FF',
-  },
-  aiButton: {
-    marginHorizontal: 24,
-    marginBottom: 30,
-    borderRadius: 25,
-    overflow: 'hidden',
-  },
-  aiButtonGradient: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 18,
-    gap: 8,
-  },
-  aiButtonText: {
-    color: '#FFFFFF',
-    fontSize: 18,
-    fontFamily: 'Codec-Pro-Bold',
   },
   section: {
     marginBottom: 30,

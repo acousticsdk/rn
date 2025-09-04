@@ -181,71 +181,66 @@ export default function MasterHomepage() {
         </View>
 
         <View style={styles.bottomSpacing} />
-        </ScrollView>
+      </ScrollView>
 
-        {/* Floating Tab Bar */}
-        <View style={styles.floatingTabBar}>
-          <View style={styles.tabBarContainer}>
-            {/* Home Tab */}
-            <TouchableOpacity 
-              style={styles.tabItem}
-              onPress={() => handleTabPress('home')}
-            >
-              <HomeIcon size={24} color="#0066FF" />
-            </TouchableOpacity>
+      {/* Floating Tab Bar */}
+      <View style={styles.floatingTabBar}>
+        <View style={styles.tabBarContainer}>
+          {/* Home Tab */}
+          <TouchableOpacity 
+            style={styles.tabItem}
+            onPress={() => handleTabPress('home')}
+          >
+            <HomeIcon size={24} color="#0066FF" />
+          </TouchableOpacity>
 
-            {/* Chat Tab */}
-            <TouchableOpacity 
-              style={styles.tabItem}
-              onPress={() => handleTabPress('chat')}
-            >
-              <ChatIcon size={24} color="#666666" />
-            </TouchableOpacity>
+          {/* Chat Tab */}
+          <TouchableOpacity 
+            style={styles.tabItem}
+            onPress={() => handleTabPress('chat')}
+          >
+            <ChatIcon size={24} color="#666666" />
+          </TouchableOpacity>
 
-            {/* Marketplace Tab */}
-            <TouchableOpacity 
-              style={styles.tabItem}
-              onPress={() => handleTabPress('marketplace')}
-            >
-              <MarketplaceIcon size={24} color="#666666" />
-            </TouchableOpacity>
+          {/* Marketplace Tab */}
+          <TouchableOpacity 
+            style={styles.tabItem}
+            onPress={() => handleTabPress('marketplace')}
+          >
+            <MarketplaceIcon size={24} color="#666666" />
+          </TouchableOpacity>
 
-            {/* Wallet Tab */}
-            <TouchableOpacity 
-              style={styles.tabItem}
-              onPress={() => handleTabPress('wallet')}
-            >
-              <WalletIcon size={24} color="#666666" />
-            </TouchableOpacity>
+          {/* Wallet Tab */}
+          <TouchableOpacity 
+            style={styles.tabItem}
+            onPress={() => handleTabPress('wallet')}
+          >
+            <WalletIcon size={24} color="#666666" />
+          </TouchableOpacity>
 
-            {/* Profile Tab */}
-            <TouchableOpacity 
-              style={styles.tabItem}
-              onPress={() => handleTabPress('profile')}
-            >
-              <ProfileIcon size={24} color="#666666" />
-            </TouchableOpacity>
-          </View>
+          {/* Profile Tab */}
+          <TouchableOpacity 
+            style={styles.tabItem}
+            onPress={() => handleTabPress('profile')}
+          >
+            <ProfileIcon size={24} color="#666666" />
+          </TouchableOpacity>
         </View>
-      </SafeAreaView>
-    </ImageBackground>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  backgroundImage: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#070707',
-  },
+          }
+  )
   safeArea: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: '#070707',
   },
   container: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: '#070707',
   },
   header: {
     alignItems: 'center',

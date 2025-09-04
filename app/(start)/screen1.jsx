@@ -128,7 +128,6 @@ const styles = StyleSheet.create({
     marginTop: 8,
     justifyContent: 'flex-start',
   },
-  title: { fontSize: 28, fontWeight: '600', textAlign: 'center', lineHeight: 40, fontFamily: 'Codec-Pro-SemiBold' },
   title: { 
     fontSize: 28, 
     fontWeight: '600', 
@@ -140,8 +139,6 @@ const styles = StyleSheet.create({
   },
   titleWhite: { color: '#FFFFFF' },
   gradientTextContainer: { alignItems: 'center', justifyContent: 'center' },
-  subtitle: { color: '#787878', fontSize: 16, fontWeight: '400', textAlign: 'center', lineHeight: 20, fontFamily: 'Codec-Pro-News', marginTop: 30, marginBottom: 64 },
-  subtitle: { color: '#787878', fontSize: 16, fontWeight: '400', textAlign: 'center', lineHeight: 20, fontFamily: 'Codec-Pro-Light', marginTop: 30, marginBottom: 64 },
   subtitle: { color: '#787878', fontSize: 16, fontWeight: '400', textAlign: 'center', lineHeight: 20, fontFamily: 'Codec-Pro-Bold', marginTop: 30, marginBottom: 64 },
   buttonContainer: { width: '100%', maxWidth: 320, paddingBottom: 32 },
   devButtonsContainer: {

@@ -232,5 +232,216 @@ export default function MasterHomepage() {
 }
 
 const styles = StyleSheet.create({
-
+          }
+  )
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#070707',
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#070707',
+  },
+  header: {
+    alignItems: 'center',
+    paddingTop: 20,
+    paddingBottom: 30,
+  },
+  titleContainer: {
+    borderWidth: 2,
+    borderColor: '#FFFFFF',
+    borderRadius: 50,
+    paddingHorizontal: 30,
+    paddingVertical: 12,
+    backgroundColor: '#000000',
+  },
+  title: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontFamily: 'Benzin-Bold',
+    letterSpacing: 2,
+  },
+  mainCard: {
+    marginHorizontal: 24,
+    marginBottom: 30,
+    borderRadius: 30,
+    overflow: 'hidden',
+    height: 300,
+    position: 'relative',
+  },
+  fullBlockAvatar: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+  greetingContainer: {
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    borderRadius: 25,
+    paddingHorizontal: 30,
+    paddingVertical: 15,
+    marginBottom: 20,
+  },
+  greetingContainerBottomLeft: {
+    position: 'absolute',
+    bottom: 20,
+    left: 20,
+  },
+  blurContainer: {
+    borderRadius: 25,
+    overflow: 'hidden',
+  },
+  blurBackground: {
+    borderRadius: 25,
+  },
+  greetingContent: {
+    paddingHorizontal: 30,
+    paddingVertical: 15,
+  },
+  greeting: {
+    color: '#FFFFFF',
+    fontSize: 20,
+    fontFamily: 'Codec-Pro-Bold',
+    textAlign: 'center',
+  },
+  statsSection: {
+    paddingHorizontal: 24,
+    marginBottom: 30,
+  },
+  statsRow: {
+    flexDirection: 'row',
+    gap: 15,
+  },
+  statsBlock: {
+    flex: 1,
+    backgroundColor: '#131313',
+    borderRadius: 28,
+    padding: 15,
+    gap: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  blockLabel: {
+    color: '#787878',
+    fontSize: 16,
+    fontFamily: 'Codec-Pro-Bold',
+  },
+  blockRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  blockValue: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontFamily: 'Codec-Pro-Bold',
+  },
+  blockValueGradient: {
+    borderRadius: 25,
+    paddingVertical: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  blockValueText: {
+    color: '#FFFFFF',
+    fontSize: 11,
+    fontFamily: 'Codec-Pro-Bold',
+    textAlign: 'center',
+  },
+  invitedPlaque: {
+    borderWidth: 1,
+    borderColor: '#444444',
+    borderRadius: 15,
+    paddingVertical: 12,
+    paddingHorizontal: 15,
+    backgroundColor: '#131313',
+    marginBottom: 10,
+  },
+  firstEarningsPlaque: {
+    borderRadius: 25,
+    paddingVertical: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#131313',
+    borderWidth: 1,
+    borderColor: '#333333',
+    width: '100%',
+  },
+  firstEarningsText: {
+    color: '#FFFFFF',
+    fontSize: 11,
+    fontFamily: 'Codec-Pro-Bold',
+    textAlign: 'center',
+  },
+  invitedLabel: {
+    color: '#8C8C8C',
+  },
+  invitedValue: {
+    color: '#FFFFFF',
+  },
+  buildTeamContainer: {
+    paddingHorizontal: 24,
+    marginBottom: 30,
+  },
+  buildTeamButton: {
+    borderRadius: 15,
+    overflow: 'hidden',
+  },
+  buildTeamGradientBorder: {
+    borderRadius: 15,
+    padding: 2,
+  },
+  buildTeamGradient: {
+    width: '100%',
+    paddingVertical: 18,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buildTeamText: {
+    color: '#FFFFFF',
+    fontSize: 22,
+    fontFamily: 'Codec-Pro-Bold',
+    letterSpacing: 1,
+  },
+  bottomSpacing: {
+    height: 20,
+  },
+  floatingTabBar: {
+    position: 'absolute',
+    bottom: 20,
+    left: 16,
+    right: 16,
+    height: 75,
+    backgroundColor: '#1A1A1A',
+    borderRadius: 50,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 12,
+    elevation: 12,
+  },
+  tabBarContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    paddingHorizontal: 20,
+    paddingTop: 15,
+    paddingBottom: 15,
+  },
+  tabItem: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  teamLabel: {
+    color: '#787878',
+    fontSize: 16,
+    fontFamily: 'Codec-Pro-Bold',
+    textAlign: 'center',
+  },
 });

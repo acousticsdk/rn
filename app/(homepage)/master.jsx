@@ -70,21 +70,16 @@ export default function MasterHomepage() {
             {/* Left Block - Team */}
             <View style={styles.statsBlock}>
               <Text style={styles.blockLabel}>Ваша команда:</Text>
-              <View style={styles.invitedPlaque}>
+              <View style={styles.blockValueGradient}>
                 <Text style={styles.blockValueText}>{teamCount} человек</Text>
               </View>
             </View>
 
             {/* Right Block - Invited/Earnings */}
             <View style={styles.statsBlock}>
-              <LinearGradient
-                colors={['#0066FF', '#4A9EFF']}
-                style={styles.blockValueGradient}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 0 }}
-              >
+              <View style={styles.invitedPlaque}>
                 <Text style={styles.blockValueText}>Заработано: € {earnings}</Text>
-              </LinearGradient>
+              </View>
               <LinearGradient
                 colors={['#0066FF', '#4A9EFF']}
                 style={styles.blockValueGradient}

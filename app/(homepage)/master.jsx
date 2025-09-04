@@ -129,7 +129,7 @@ export default function MasterHomepage() {
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
               >
-                <Text style={styles.blockValueText}>{teamCount} человек</Text>
+                <Text style={[styles.blockValueText, { fontSize: 14 }]}>{teamCount} человек</Text>
               </LinearGradient>
             </View>
 
@@ -336,7 +336,7 @@ const styles = StyleSheet.create({
   },
   blockValueText: {
     color: '#FFFFFF',
-    fontSize: 14,
+    fontSize: 11,
     fontFamily: 'Codec-Pro-Bold',
     textAlign: 'center',
   },

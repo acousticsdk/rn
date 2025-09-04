@@ -11,7 +11,8 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
-import { Chrome as Home, MessageCircle, Store, Wallet, User } from 'lucide-react-native';
+import { MessageCircle, Store, Wallet, User } from 'lucide-react-native';
+import HomeIcon from '@/components/ui/HomeIcon';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -155,7 +156,7 @@ export default function MasterHomepage() {
             style={styles.tabItem}
             onPress={() => handleTabPress('home')}
           >
-            <Home size={24} color="#0066FF" />
+            <HomeIcon size={24} color="#0066FF" />
           </TouchableOpacity>
 
           {/* Chat Tab */}

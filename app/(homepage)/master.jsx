@@ -195,11 +195,9 @@ const styles = StyleSheet.create({
   },
   statsBlock: {
     flex: 1,
-    backgroundColor: '#1a1a1a',
+    backgroundColor: '#131313',
     borderRadius: 20,
     padding: 10,
-    borderWidth: 1,
-    borderColor: '#333333',
     gap: 15,
   },
   blockLabel: {

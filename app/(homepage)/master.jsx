@@ -13,6 +13,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { MessageCircle, Store, Wallet, User } from 'lucide-react-native';
 import HomeIcon from '@/components/ui/HomeIcon';
+import ChatIcon from '@/components/ui/ChatIcon';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -164,7 +165,7 @@ export default function MasterHomepage() {
             style={styles.tabItem}
             onPress={() => handleTabPress('chat')}
           >
-            <MessageCircle size={24} color="#666666" />
+            <ChatIcon size={24} color="#666666" />
           </TouchableOpacity>
 
           {/* Marketplace Tab */}

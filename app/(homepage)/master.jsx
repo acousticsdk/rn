@@ -104,12 +104,19 @@ export default function MasterHomepage() {
         <View style={styles.buildTeamContainer}>
           <TouchableOpacity style={styles.buildTeamButton} onPress={handleBuildTeam}>
             <LinearGradient
-              colors={['#023CFE', '#027EFD']}
-              style={styles.buildTeamGradient}
+              colors={['rgb(53, 68, 252)', 'rgb(74, 152, 255)']}
+              style={styles.buildTeamGradientBorder}
               start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
+              end={{ x: 1, y: 0 }}
             >
-              <Text style={styles.buildTeamText}>СОБРАТЬ КОМАНДУ</Text>
+              <LinearGradient
+                colors={['#0210F8', '#0088FF']}
+                style={styles.buildTeamGradient}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+              >
+                <Text style={styles.buildTeamText}>СОБРАТЬ КОМАНДУ</Text>
+              </LinearGradient>
             </LinearGradient>
           </TouchableOpacity>
         </View>
@@ -266,17 +273,23 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   buildTeamButton: {
-    borderRadius: 30,
+    borderRadius: 15,
     overflow: 'hidden',
   },
+  buildTeamGradientBorder: {
+    borderRadius: 15,
+    padding: 2,
+  },
   buildTeamGradient: {
-    paddingVertical: 20,
+    width: '100%',
+    paddingVertical: 18,
+    borderRadius: 15,
     alignItems: 'center',
     justifyContent: 'center',
   },
   buildTeamText: {
     color: '#FFFFFF',
-    fontSize: 20,
+    fontSize: 22,
     fontFamily: 'Codec-Pro-Bold',
     letterSpacing: 1,
   },

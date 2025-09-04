@@ -12,7 +12,7 @@ import {
   Dimensions
 } from 'react-native';
 import { router } from 'expo-router';
-import { Search, Heart, Calendar, Video, Palette, Play, Zap, ChevronDown, ChevronUp, Star } from 'lucide-react-native';
+import { Search, Heart, Calendar, Video, Palette, Play, Zap, ChevronDown, ChevronUp, Star, MessageCircle, Camera, Code } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const { width: screenWidth } = Dimensions.get('window');
@@ -58,7 +58,11 @@ const CATEGORIES = [
   { id: 'scenario', title: 'Сценарий', icon: Calendar },
   { id: 'montage', title: 'Монтаж', icon: Video },
   { id: 'design', title: 'Дизайн', icon: Palette },
-  { id: 'shooting', title: 'Съемка', icon: Play }
+  { id: 'shooting', title: 'Съемка', icon: Play },
+  { id: 'smm', title: 'SMM', icon: MessageCircle },
+  { id: 'ads', title: 'Реклама', icon: Zap },
+  { id: 'photo', title: 'Для Съемки', icon: Camera },
+  { id: 'it', title: 'IT', icon: Code }
 ];
 
 const TABS = [
@@ -222,35 +226,15 @@ export default function MarketplaceScreen() {
           </View>
 
           {/* Categories Section */}
-          <TouchableOpacity 
-            style={styles.categoriesHeader}
-            onPress={() => setShowCategories(!showCategories)}
-          >
-            <Text style={styles.categoriesTitle}>Выбрать категорию</Text>
-            <ChevronDown size={20} color="#FFFFFF" />
-          </TouchableOpacity>
+          <View style={styles.categoriesSection}>
+            <TouchableOpacity 
+              style={styles.categoriesHeader}
+              onPress={() => setShowCategories(!showCategories)}
+            >
+              <Text style={styles.categoriesTitle}>Выбрать категорию</Text>
+              <ChevronDown size={20} color="#FFFFFF" />
+            </TouchableOpacity>
 
-          {/* Categories Grid */}
-          <View style={styles.categoriesContainer}>
-            {CATEGORIES.map((category) => {
-              const IconComponent = category.icon;
-              return (
-                <TouchableOpacity
-                  key={category.id}
-                  style={[
-                    styles.categoryItem,
-                    selectedCategory === category.id && styles.selectedCategory
-                  ]}
-                  onPress={() => handleCategorySelect(category.id)}
-                >
-                  <View style={styles.categoryIcon}>
-                    <IconComponent size={20} color="#FFFFFF" />
-                  </View>
-                  <Text style={styles.categoryText}>{category.title}</Text>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
 
           {/* AI Team Builder Button */}
           <TouchableOpacity style={styles.aiButton} onPress={handleAITeamBuilder}>

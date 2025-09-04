@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
+import { Chrome as Home, MessageCircle, Store, Wallet, User } from 'lucide-react-native';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -29,6 +30,28 @@ export default function MasterHomepage() {
   const handleBuildTeam = () => {
     // TODO: Логика сборки команды
     console.log('Собрать команду');
+  };
+
+  const handleTabPress = (tabName) => {
+    switch (tabName) {
+      case 'home':
+        // Уже на главной
+        break;
+      case 'chat':
+        router.push('/(chat)');
+        break;
+      case 'marketplace':
+        // TODO: Переход на маркетплейс
+        console.log('Маркетплейс');
+        break;
+      case 'wallet':
+        // TODO: Переход на кошелек
+        console.log('Кошелек');
+        break;
+      case 'profile':
+        router.push('/(profile)');
+        break;
+    }
   };
 
   return (
@@ -123,6 +146,56 @@ export default function MasterHomepage() {
 
         <View style={styles.bottomSpacing} />
       </ScrollView>
+
+      {/* Floating Tab Bar */}
+      <View style={styles.floatingTabBar}>
+        <View style={styles.tabBarContainer}>
+          {/* Home Tab */}
+          <TouchableOpacity 
+            style={styles.tabItem}
+            onPress={() => handleTabPress('home')}
+          >
+            <Home size={24} color="#0066FF" />
+            <Text style={[styles.tabLabel, styles.activeTabLabel]}>Главная</Text>
+          </TouchableOpacity>
+
+          {/* Chat Tab */}
+          <TouchableOpacity 
+            style={styles.tabItem}
+            onPress={() => handleTabPress('chat')}
+          >
+            <MessageCircle size={24} color="#666666" />
+            <Text style={styles.tabLabel}>Чат</Text>
+          </TouchableOpacity>
+
+          {/* Marketplace Tab */}
+          <TouchableOpacity 
+            style={styles.tabItem}
+            onPress={() => handleTabPress('marketplace')}
+          >
+            <Store size={24} color="#666666" />
+            <Text style={styles.tabLabel}>Маркет</Text>
+          </TouchableOpacity>
+
+          {/* Wallet Tab */}
+          <TouchableOpacity 
+            style={styles.tabItem}
+            onPress={() => handleTabPress('wallet')}
+          >
+            <Wallet size={24} color="#666666" />
+            <Text style={styles.tabLabel}>Кошелек</Text>
+          </TouchableOpacity>
+
+          {/* Profile Tab */}
+          <TouchableOpacity 
+            style={styles.tabItem}
+            onPress={() => handleTabPress('profile')}
+          >
+            <User size={24} color="#666666" />
+            <Text style={styles.tabLabel}>Профиль</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </SafeAreaView>
   );
 }
@@ -295,6 +368,46 @@ const styles = StyleSheet.create({
   },
   bottomSpacing: {
     height: 20,
+  },
+  floatingTabBar: {
+    position: 'absolute',
+    bottom: 20,
+    left: 16,
+    right: 16,
+    height: 90,
+    backgroundColor: '#1A1A1A',
+    borderRadius: 25,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 12,
+    elevation: 12,
+  },
+  tabBarContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    paddingHorizontal: 20,
+    paddingTop: 15,
+    paddingBottom: 25,
+  },
+  tabItem: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  tabLabel: {
+    fontSize: 11,
+    fontFamily: 'Codec-Pro-Bold',
+    marginTop: 4,
+    color: '#666666',
+  },
+  activeTabLabel: {
+    color: '#0066FF',
   },
   teamLabel: {
     color: '#787878',

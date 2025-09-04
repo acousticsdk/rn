@@ -235,34 +235,36 @@ export default function MarketplaceScreen() {
               <ChevronDown size={20} color="#FFFFFF" />
             </TouchableOpacity>
 
-            {showCategories && (
-              <View style={styles.categoriesContainer}>
-                <View style={styles.categoriesRow}>
-                  {CATEGORIES.slice(0, 4).map((category) => (
-                    <TouchableOpacity
-                      key={category.id}
-                      style={styles.categoryColumn}
-                      onPress={() => handleCategorySelect(category.id)}
-                    >
-                      <View style={[
-                        styles.categoryItem,
-                        selectedCategory === category.id && styles.selectedCategory
-                      ]}>
-                        <category.icon 
-                          size={32} 
-                          color={selectedCategory === category.id ? "#0066FF" : "#FFFFFF"} 
-                        />
-                      </View>
-                      <Text style={[
-                        styles.categoryText,
-                        selectedCategory === category.id && styles.selectedCategoryText
-                      ]}>
-                        {category.title}
-                      </Text>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-                
+            <View style={styles.categoriesContainer}>
+              {/* Первый ряд - всегда показываем */}
+              <View style={styles.categoriesRow}>
+                {CATEGORIES.slice(0, 4).map((category) => (
+                  <TouchableOpacity
+                    key={category.id}
+                    style={styles.categoryColumn}
+                    onPress={() => handleCategorySelect(category.id)}
+                  >
+                    <View style={[
+                      styles.categoryItem,
+                      selectedCategory === category.id && styles.selectedCategory
+                    ]}>
+                      <category.icon 
+                        size={32} 
+                        color={selectedCategory === category.id ? "#0066FF" : "#FFFFFF"} 
+                      />
+                    </View>
+                    <Text style={[
+                      styles.categoryText,
+                      selectedCategory === category.id && styles.selectedCategoryText
+                    ]}>
+                      {category.title}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+              
+              {/* Второй ряд - показываем только при развернутых категориях */}
+              {showCategories && (
                 <View style={styles.categoriesRow}>
                   {CATEGORIES.slice(4, 8).map((category) => (
                     <TouchableOpacity
@@ -288,8 +290,8 @@ export default function MarketplaceScreen() {
                     </TouchableOpacity>
                   ))}
                 </View>
-              </View>
-            )}
+              )}
+            </View>
           </View>
 
           {/* AI Team Builder Button */}

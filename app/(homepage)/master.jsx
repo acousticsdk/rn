@@ -85,8 +85,8 @@ export default function MasterHomepage() {
               />
             </View>
 
-            {/* Greeting */}
-            <View style={styles.greetingContainer}>
+            {/* Greeting - moved to bottom left */}
+            <View style={styles.greetingContainerBottomLeft}>
               <Text style={styles.greeting}>Привет, {userName}!</Text>
             </View>
           </LinearGradient>
@@ -258,6 +258,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical: 15,
     marginBottom: 20,
+  },
+  greetingContainerBottomLeft: {
+    position: 'absolute',
+    bottom: 20,
+    left: 20,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    borderRadius: 25,
+    paddingHorizontal: 30,
+    paddingVertical: 15,
   },
   greeting: {
     color: '#FFFFFF',

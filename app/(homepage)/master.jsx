@@ -235,6 +235,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#131313',
     marginBottom: 10,
+    borderWidth: 1,
+    borderColor: '#333333',
   },
   buildTeamContainer: {
     paddingHorizontal: 24,

@@ -31,6 +31,7 @@ let HOMEPAGE_USER_NAME = 'Mikhail';        // Имя пользователя
 let HOMEPAGE_TEAM_COUNT = 0;               // Количество людей в команде
 let HOMEPAGE_INVITED_COUNT = 1;            // Количество приглашенных друзей
 let HOMEPAGE_EARNINGS = 1000;              // Заработанная сумма в евро
+let HOMEPAGE_AVATAR_URL = 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400'; // URL аватара пользователя
 
 // Функции для обновления данных с бекенда
 const updateHomepageData = (userData) => {
@@ -38,6 +39,7 @@ const updateHomepageData = (userData) => {
   HOMEPAGE_TEAM_COUNT = userData.teamCount || 0;
   HOMEPAGE_INVITED_COUNT = userData.invitedCount || 1;
   HOMEPAGE_EARNINGS = userData.earnings || 1000;
+  HOMEPAGE_AVATAR_URL = userData.avatarUrl || 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400';
 };
 
 // Функция для получения текущих данных
@@ -45,7 +47,8 @@ const getHomepageData = () => ({
   userName: HOMEPAGE_USER_NAME,
   teamCount: HOMEPAGE_TEAM_COUNT,
   invitedCount: HOMEPAGE_INVITED_COUNT,
-  earnings: HOMEPAGE_EARNINGS
+  earnings: HOMEPAGE_EARNINGS,
+  avatarUrl: HOMEPAGE_AVATAR_URL
 });
 
 // ========================================
@@ -57,6 +60,7 @@ export default function MasterHomepage() {
   const [teamCount] = useState(HOMEPAGE_TEAM_COUNT);
   const [invitedCount] = useState(HOMEPAGE_INVITED_COUNT);
   const [earnings] = useState(HOMEPAGE_EARNINGS);
+  const [avatarUrl] = useState(HOMEPAGE_AVATAR_URL);
 
   const handleBuildTeam = () => {
     // TODO: Логика сборки команды
@@ -98,7 +102,7 @@ export default function MasterHomepage() {
         {/* Main Card */}
         <View style={styles.mainCard}>
           <Image
-            source={{ uri: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400' }}
+            source={{ uri: avatarUrl }}
             style={styles.fullBlockAvatar}
           />
           {/* Greeting - moved to bottom left */}

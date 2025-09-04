@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#1a1a1a',
     borderRadius: 20,
-    padding: 20,
+    padding: 10,
     borderWidth: 1,
     borderColor: '#333333',
     gap: 15,

@@ -12,7 +12,7 @@ import {
   Dimensions
 } from 'react-native';
 import { router } from 'expo-router';
-import { Search, Heart, Calendar, Video, Palette, Play, Zap, ChevronDown, ChevronUp, Star, MessageCircle, Camera, Code } from 'lucide-react-native';
+import { Search, Heart, Calendar, Video, Palette, Play, Zap, ChevronDown, ChevronUp, Star } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const { width: screenWidth } = Dimensions.get('window');
@@ -58,11 +58,7 @@ const CATEGORIES = [
   { id: 'scenario', title: 'Сценарий', icon: Calendar },
   { id: 'montage', title: 'Монтаж', icon: Video },
   { id: 'design', title: 'Дизайн', icon: Palette },
-  { id: 'shooting', title: 'Съемка', icon: Play },
-  { id: 'smm', title: 'SMM', icon: MessageCircle },
-  { id: 'ads', title: 'Реклама', icon: Zap },
-  { id: 'photo', title: 'Для Съемки', icon: Camera },
-  { id: 'it', title: 'IT', icon: Code }
+  { id: 'shooting', title: 'Съемка', icon: Play }
 ];
 
 const TABS = [
@@ -226,15 +222,47 @@ export default function MarketplaceScreen() {
           </View>
 
           {/* Categories Section */}
-          <View style={styles.categoriesSection}>
-            <TouchableOpacity 
-              style={styles.categoriesHeader}
-              onPress={() => setShowCategories(!showCategories)}
-            >
-              <Text style={styles.categoriesTitle}>Выбрать категорию</Text>
-              <ChevronDown size={20} color="#FFFFFF" />
-            </TouchableOpacity>
+          <TouchableOpacity 
+            style={styles.categoriesHeader}
+            onPress={() => setShowCategories(!showCategories)}
+          >
+            <Text style={styles.categoriesTitle}>Выбрать категорию</Text>
+            <ChevronDown size={20} color="#FFFFFF" />
+          </TouchableOpacity>
 
+          {/* Categories Grid */}
+          <View style={styles.categoriesContainer}>
+            {CATEGORIES.map((category) => {
+              const IconComponent = category.icon;
+              return (
+                <View key={category.id}>
+                  <TouchableOpacity
+                    style={[
+                      styles.categoryItem,
+                      selectedCategory === category.id && styles.selectedCategory
+                    ]}
+                    onPress={() => handleCategorySelect(category.id)}
+                  >
+                    <View style={[
+                      styles.categoryIcon,
+                      selectedCategory === category.id && { backgroundColor: '#FFFFFF' }
+                    ]}>
+                      <IconComponent 
+                        size={24} 
+                        color={selectedCategory === category.id ? '#0066FF' : '#FFFFFF'} 
+                      />
+                    </View>
+                  </TouchableOpacity>
+                  <Text style={[
+                    styles.categoryText,
+                    selectedCategory === category.id && { color: '#0066FF' }
+                  ]}>
+                    {category.title}
+                  </Text>
+                </View>
+              );
+            })}
+          </View>
 
           {/* AI Team Builder Button */}
           <TouchableOpacity style={styles.aiButton} onPress={handleAITeamBuilder}>
@@ -349,58 +377,43 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 24,
-    marginBottom: 20,
+    marginBottom: 15,
   },
   categoriesTitle: {
     color: '#FFFFFF',
     fontSize: 18,
     fontFamily: 'Codec-Pro-Bold',
   },
-  categoriesSection: {
-    marginBottom: 20,
-  },
   categoriesContainer: {
-    paddingHorizontal: 24,
-    gap: 20,
-  },
-  categoriesRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    gap: 15,
-  },
-  categoryColumn: {
-    flex: 1,
-    alignItems: 'center',
+    paddingHorizontal: 24,
+    marginBottom: 20,
     gap: 12,
   },
   categoryItem: {
-    width: '100%',
-    aspectRatio: 1,
+    flex: 1,
     backgroundColor: '#1a1a1a',
-    borderRadius: 20,
+    borderRadius: 15,
+    paddingVertical: 15,
     alignItems: 'center',
-    justifyContent: 'center',
+    gap: 10,
     borderWidth: 1,
     borderColor: '#333333',
+    minHeight: 80,
   },
   selectedCategory: {
     backgroundColor: '#0066FF',
     borderColor: '#0066FF',
   },
   categoryIcon: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: 'rgba(0, 102, 255, 0.2)',
+    width: 32,
+    height: 32,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  selectedCategoryIcon: {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-  },
   categoryText: {
     color: '#FFFFFF',
-    fontSize: 14,
+    fontSize: 11,
     fontFamily: 'Codec-Pro-Bold',
     textAlign: 'center',
   },

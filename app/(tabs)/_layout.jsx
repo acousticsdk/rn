@@ -25,6 +25,7 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Главная',
+          href: '/(homepage)/master', // Временно направляем на мастера
           tabBarIcon: ({ size, color }) => (
             <Home size={size} color={color} />
           ),

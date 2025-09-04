@@ -82,12 +82,14 @@ export default function MasterHomepage() {
 
             {/* Right Block - Invited/Earnings */}
             <View style={styles.statsBlock}>
-              <View style={styles.invitedPlaque}>
-                <View style={styles.blockRow}>
-                  <Text style={styles.blockLabel}>Приглашено:</Text>
-                  <Text style={styles.blockValue}>{invitedCount} друг</Text>
-                </View>
-              </View>
+              <LinearGradient
+                colors={['#0066FF', '#4A9EFF']}
+                style={styles.blockValueGradient}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+              >
+                <Text style={styles.blockValueText}>Заработано: € {earnings}</Text>
+              </LinearGradient>
               <LinearGradient
                 colors={['#0066FF', '#4A9EFF']}
                 style={styles.blockValueGradient}

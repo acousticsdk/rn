@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
-
 import { router } from 'expo-router';
 
 export default function IndexScreen() {
   useEffect(() => {
-    // Перенаправляем на главную страницу (табы)
-    router.replace('/(tabs)');
+    // Перенаправляем на первый экран приложения
+    router.replace('/(start)/screen1');
   }, []);
 
   return null;

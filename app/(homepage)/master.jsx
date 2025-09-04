@@ -15,6 +15,7 @@ import { MessageCircle, Store, Wallet, User } from 'lucide-react-native';
 import HomeIcon from '@/components/ui/HomeIcon';
 import ChatIcon from '@/components/ui/ChatIcon';
 import MarketplaceIcon from '@/components/ui/MarketplaceIcon';
+import WalletIcon from '@/components/ui/WalletIcon';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -182,7 +183,7 @@ export default function MasterHomepage() {
             style={styles.tabItem}
             onPress={() => handleTabPress('wallet')}
           >
-            <Wallet size={24} color="#666666" />
+            <WalletIcon size={24} color="#666666" />
           </TouchableOpacity>
 
           {/* Profile Tab */}

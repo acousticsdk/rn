@@ -316,9 +316,12 @@ export default function PersonalInfoScreen() {
 }
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+  },
   container: {
     flex: 1,
-    backgroundColor: '#070707',
+    backgroundColor: 'transparent',
   },
   scrollView: {
     flex: 1,

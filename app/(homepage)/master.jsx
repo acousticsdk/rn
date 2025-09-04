@@ -64,8 +64,7 @@ export default function MasterHomepage() {
   const [avatarUrl] = useState(HOMEPAGE_AVATAR_URL);
 
   const handleBuildTeam = () => {
-    // TODO: Логика сборки команды
-    console.log('Собрать команду');
+    router.push('/(tabs)/marketplace');
   };
 
   const handleTabPress = (tabName) => {

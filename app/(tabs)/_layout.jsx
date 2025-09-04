@@ -1,5 +1,6 @@
 import { Tabs } from 'expo-router';
-import { Chrome as Home, MessageCircle, Store, Wallet, User } from 'lucide-react-native';
+import { Home, MessageCircle, Store, Wallet, User } from 'lucide-react-native';
+import { Platform } from 'react-native';
 
 export default function TabLayout() {
   return (
@@ -7,17 +8,34 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#1a1a1a',
+          backgroundColor: '#1A1A1A',
           borderTopWidth: 0,
-          height: 80,
-          paddingBottom: 20,
-          paddingTop: 10,
+          height: 90,
+          paddingBottom: Platform.OS === 'ios' ? 25 : 15,
+          paddingTop: 15,
+          paddingHorizontal: 20,
+          marginHorizontal: 16,
+          marginBottom: 20,
+          borderRadius: 25,
+          position: 'absolute',
+          shadowColor: '#000000',
+          shadowOffset: {
+            width: 0,
+            height: 8,
+          },
+          shadowOpacity: 0.3,
+          shadowRadius: 12,
+          elevation: 12,
         },
         tabBarActiveTintColor: '#0066FF',
         tabBarInactiveTintColor: '#666666',
         tabBarLabelStyle: {
-          fontSize: 12,
+          fontSize: 11,
           fontFamily: 'Codec-Pro-Bold',
+          marginTop: 4,
+        },
+        tabBarIconStyle: {
+          marginTop: 2,
         },
       }}
     >

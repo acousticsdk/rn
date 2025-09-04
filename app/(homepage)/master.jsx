@@ -217,7 +217,6 @@ const styles = StyleSheet.create({
   },
   blockValueGradient: {
     borderRadius: 25,
-    paddingHorizontal: 20,
     paddingVertical: 15,
     alignItems: 'center',
     justifyContent: 'center',

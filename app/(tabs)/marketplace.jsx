@@ -1,24 +1,290 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   View, 
   Text, 
   StyleSheet, 
-  SafeAreaView 
+  SafeAreaView, 
+  ScrollView,
+  TouchableOpacity,
+  TextInput,
+  Image,
+  FlatList,
+  Dimensions
 } from 'react-native';
+import { router } from 'expo-router';
+import { Search, Heart, Calendar, Video, Palette, Play, Zap, ChevronDown, ChevronUp, Star } from 'lucide-react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
+const { width: screenWidth } = Dimensions.get('window');
+
+// Глобальные переменные для интеграции с бекендом
+let MARKETPLACE_SEARCH_QUERY = '';
+let MARKETPLACE_SELECTED_CATEGORY = '';
+let MARKETPLACE_ACTIVE_TAB = 'top100k';
+
+// Моковые данные пользователей
+const MOCK_USERS = [
+  {
+    id: 1,
+    name: 'Артем Асташ',
+    specialization: 'Дизайнер',
+    rating: 5.0,
+    avatar: 'https://alfacta.online/100k/simple-ava-black.png'
+  },
+  {
+    id: 2,
+    name: 'Мария Козлова',
+    specialization: 'Монтажер',
+    rating: 5.0,
+    avatar: 'https://alfacta.online/100k/simple-ava-black.png'
+  },
+  {
+    id: 3,
+    name: 'Дмитрий Петров',
+    specialization: 'Сценарист',
+    rating: 5.0,
+    avatar: 'https://alfacta.online/100k/simple-ava-black.png'
+  },
+  {
+    id: 4,
+    name: 'Анна Сидорова',
+    specialization: 'Съемщик',
+    rating: 5.0,
+    avatar: 'https://alfacta.online/100k/simple-ava-black.png'
+  }
+];
+
+const CATEGORIES = [
+  { id: 'scenario', title: 'Сценарий', icon: Calendar },
+  { id: 'montage', title: 'Монтаж', icon: Video },
+  { id: 'design', title: 'Дизайн', icon: Palette },
+  { id: 'shooting', title: 'Съемка', icon: Play }
+];
+
+const TABS = [
+  { id: 'top100k', title: 'ТОП 100К' },
+  { id: 'online', title: 'В СЕТИ' },
+  { id: 'reviews', title: 'ОТЗЫВЫ' },
+  { id: 'rating', title: 'РЕЙТИНГ' }
+];
 
 export default function MarketplaceScreen() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeTab, setActiveTab] = useState('top100k');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [showCategories, setShowCategories] = useState(false);
+  const [top100kExpanded, setTop100kExpanded] = useState(true);
+  const [ratingExpanded, setRatingExpanded] = useState(true);
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    MARKETPLACE_SEARCH_QUERY = query;
+  };
+
+  const handleTabPress = (tabId) => {
+    setActiveTab(tabId);
+    MARKETPLACE_ACTIVE_TAB = tabId;
+  };
+
+  const handleCategorySelect = (categoryId) => {
+    setSelectedCategory(categoryId);
+    MARKETPLACE_SELECTED_CATEGORY = categoryId;
+    setShowCategories(false);
+  };
+
+  const handleHireUser = (userId) => {
+    // TODO: Логика найма пользователя
+    router.push(`/(chat)/conversation/${userId}`);
+  };
+
+  const handleAITeamBuilder = () => {
+    // TODO: Логика ИИ сбора команды
+    console.log('ИИ сбор команды');
+  };
+
+  const renderUserCard = ({ item, index }) => {
+    const isSecond = index === 1;
+    
+    return (
+      <View style={[styles.userCard, isSecond && styles.userCardSecond]}>
+        <Image
+          source={{ uri: item.avatar }}
+          style={styles.userAvatar}
+        />
+        
+        {/* Rating */}
+        <View style={styles.userRating}>
+          <Star size={16} color="#FFD700" fill="#FFD700" />
+          <Text style={styles.ratingText}>{item.rating}</Text>
+        </View>
+
+        {/* Heart Icon */}
+        <TouchableOpacity style={styles.heartButton}>
+          <Heart size={20} color="#666666" />
+        </TouchableOpacity>
+
+        {/* User Info */}
+        <View style={styles.userInfo}>
+          <Text style={styles.userName}>{item.name}</Text>
+          
+          <View style={styles.userActions}>
+            <View style={styles.specializationTag}>
+              <Text style={styles.specializationText}>{item.specialization}</Text>
+            </View>
+            
+            <TouchableOpacity 
+              style={styles.hireButton}
+              onPress={() => handleHireUser(item.id)}
+            >
+              <Text style={styles.hireButtonText}>Нанять</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    );
+  };
+
+  const renderSection = (title, expanded, onToggle, data) => (
+    <View style={styles.section}>
+      <TouchableOpacity 
+        style={styles.sectionHeader}
+        onPress={onToggle}
+      >
+        <Text style={styles.sectionTitle}>{title}</Text>
+        {expanded ? (
+          <ChevronUp size={20} color="#FFFFFF" />
+        ) : (
+          <ChevronDown size={20} color="#FFFFFF" />
+        )}
+      </TouchableOpacity>
+      
+      {expanded && (
+        <FlatList
+          data={data}
+          renderItem={renderUserCard}
+          keyExtractor={(item) => item.id.toString()}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.usersList}
+          style={styles.usersListContainer}
+        />
+      )}
+    </View>
+  );
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
+        {/* Header */}
         <View style={styles.header}>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>МАРКЕТ</Text>
           </View>
         </View>
-        
-        <View style={styles.content}>
-          <Text style={styles.subtitle}>В разработке...</Text>
-        </View>
+
+        <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+          {/* Search Bar */}
+          <View style={styles.searchContainer}>
+            <View style={styles.searchInputContainer}>
+              <Search size={20} color="#666666" />
+              <TextInput
+                style={styles.searchInput}
+                placeholder="Поиск"
+                placeholderTextColor="#666666"
+                value={searchQuery}
+                onChangeText={handleSearch}
+              />
+            </View>
+            <TouchableOpacity style={styles.heartIconButton}>
+              <Heart size={24} color="#666666" />
+            </TouchableOpacity>
+          </View>
+
+          {/* Tabs */}
+          <View style={styles.tabsContainer}>
+            {TABS.map((tab) => (
+              <TouchableOpacity
+                key={tab.id}
+                style={[
+                  styles.tab,
+                  activeTab === tab.id && styles.activeTab
+                ]}
+                onPress={() => handleTabPress(tab.id)}
+              >
+                <Text style={[
+                  styles.tabText,
+                  activeTab === tab.id && styles.activeTabText
+                ]}>
+                  {tab.title}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+
+          {/* Categories Section */}
+          <TouchableOpacity 
+            style={styles.categoriesHeader}
+            onPress={() => setShowCategories(!showCategories)}
+          >
+            <Text style={styles.categoriesTitle}>Выбрать категорию</Text>
+            <ChevronDown size={20} color="#FFFFFF" />
+          </TouchableOpacity>
+
+          {/* Categories Grid */}
+          <View style={styles.categoriesContainer}>
+            {CATEGORIES.map((category) => {
+              const IconComponent = category.icon;
+              return (
+                <TouchableOpacity
+                  key={category.id}
+                  style={[
+                    styles.categoryItem,
+                    selectedCategory === category.id && styles.selectedCategory
+                  ]}
+                  onPress={() => handleCategorySelect(category.id)}
+                >
+                  <View style={styles.categoryIcon}>
+                    <IconComponent size={24} color="#FFFFFF" />
+                  </View>
+                  <Text style={styles.categoryText}>{category.title}</Text>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+
+          {/* AI Team Builder Button */}
+          <TouchableOpacity 
+            style={styles.aiButton}
+            onPress={handleAITeamBuilder}
+          >
+            <LinearGradient
+              colors={['#0066FF', '#4A9EFF']}
+              style={styles.aiButtonGradient}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+            >
+              <Text style={styles.aiButtonText}>ИИ СБОР КОМАНДЫ</Text>
+              <Zap size={20} color="#FFFFFF" />
+            </LinearGradient>
+          </TouchableOpacity>
+
+          {/* Sections */}
+          {renderSection(
+            'ТОП 100К', 
+            top100kExpanded, 
+            () => setTop100kExpanded(!top100kExpanded),
+            MOCK_USERS
+          )}
+
+          {renderSection(
+            'РЕЙТИНГ', 
+            ratingExpanded, 
+            () => setRatingExpanded(!ratingExpanded),
+            MOCK_USERS
+          )}
+
+          <View style={styles.bottomSpacing} />
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
@@ -52,14 +318,244 @@ const styles = StyleSheet.create({
     fontFamily: 'Benzin-Bold',
     letterSpacing: 2,
   },
-  content: {
+  scrollView: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
-  subtitle: {
-    color: '#787878',
+  searchContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 24,
+    marginBottom: 20,
+    gap: 12,
+  },
+  searchInputContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#1a1a1a',
+    borderRadius: 25,
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    gap: 12,
+  },
+  searchInput: {
+    flex: 1,
+    color: '#FFFFFF',
     fontSize: 16,
     fontFamily: 'Codec-Pro-News',
+  },
+  heartIconButton: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: '#1a1a1a',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  tabsContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 24,
+    marginBottom: 20,
+    gap: 8,
+  },
+  tab: {
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 25,
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#333333',
+  },
+  activeTab: {
+    backgroundColor: '#0066FF',
+    borderColor: '#0066FF',
+  },
+  tabText: {
+    color: '#666666',
+    fontSize: 14,
+    fontFamily: 'Codec-Pro-Bold',
+  },
+  activeTabText: {
+    color: '#FFFFFF',
+  },
+  categoriesHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 24,
+    marginBottom: 15,
+  },
+  categoriesTitle: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontFamily: 'Codec-Pro-Bold',
+  },
+  categoriesContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 24,
+    marginBottom: 20,
+    gap: 12,
+  },
+  categoryItem: {
+    flex: 1,
+    backgroundColor: '#1a1a1a',
+    borderRadius: 15,
+    paddingVertical: 20,
+    alignItems: 'center',
+    gap: 8,
+    borderWidth: 1,
+    borderColor: '#333333',
+  },
+  selectedCategory: {
+    backgroundColor: '#0066FF',
+    borderColor: '#0066FF',
+  },
+  categoryIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#0066FF',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  categoryText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontFamily: 'Codec-Pro-Bold',
+    textAlign: 'center',
+  },
+  aiButton: {
+    marginHorizontal: 24,
+    marginBottom: 30,
+    borderRadius: 25,
+    overflow: 'hidden',
+  },
+  aiButtonGradient: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 18,
+    gap: 8,
+  },
+  aiButtonText: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontFamily: 'Codec-Pro-Bold',
+  },
+  section: {
+    marginBottom: 30,
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 24,
+    marginBottom: 15,
+  },
+  sectionTitle: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontFamily: 'Codec-Pro-Bold',
+  },
+  usersListContainer: {
+    paddingLeft: 24,
+  },
+  usersList: {
+    paddingRight: 24,
+    gap: 16,
+  },
+  userCard: {
+    width: 200,
+    height: 280,
+    borderRadius: 20,
+    overflow: 'hidden',
+    backgroundColor: '#1a1a1a',
+    position: 'relative',
+  },
+  userCardSecond: {
+    marginRight: -50, // Частично скрываем вторую карточку
+  },
+  userAvatar: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
+  userRating: {
+    position: 'absolute',
+    top: 12,
+    left: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    borderRadius: 12,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    gap: 4,
+  },
+  ratingText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontFamily: 'Codec-Pro-Bold',
+  },
+  heartButton: {
+    position: 'absolute',
+    top: 12,
+    right: 12,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  userInfo: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    padding: 16,
+  },
+  userName: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontFamily: 'Codec-Pro-Bold',
+    marginBottom: 8,
+  },
+  userActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 8,
+  },
+  specializationTag: {
+    backgroundColor: '#333333',
+    borderRadius: 15,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    flex: 1,
+  },
+  specializationText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontFamily: 'Codec-Pro-Bold',
+    textAlign: 'center',
+  },
+  hireButton: {
+    backgroundColor: '#0066FF',
+    borderRadius: 15,
+    paddingHorizontal: 16,
+    paddingVertical: 6,
+  },
+  hireButtonText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontFamily: 'Codec-Pro-Bold',
+  },
+  bottomSpacing: {
+    height: 100, // Отступ для floating tab bar
   },
 });

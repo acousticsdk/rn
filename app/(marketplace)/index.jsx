@@ -405,7 +405,7 @@ const styles = StyleSheet.create({
     borderColor: '#333333',
   },
   selectedCategory: {
-    background: 'linear-gradient(135deg, #0B5BFE 0%, #08A1FF 100%)',
+    backgroundColor: 'transparent',
     borderColor: '#333333',
   },
   categoryText: {

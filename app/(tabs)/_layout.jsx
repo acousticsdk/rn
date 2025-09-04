@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Home, MessageCircle, Store, Wallet, User } from 'lucide-react-native';
+import { Chrome as Home, MessageCircle, Store, Wallet, User } from 'lucide-react-native';
 import { Platform } from 'react-native';
 
 export default function TabLayout() {

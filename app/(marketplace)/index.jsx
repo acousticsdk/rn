@@ -252,12 +252,11 @@ export default function MarketplaceScreen() {
                       >
                         <IconComponent 
                           size={24} 
-                          color={isSelected ? "#0066FF" : "#FFFFFF"} 
+                         color="#FFFFFF"
                         />
                       </TouchableOpacity>
                       <Text style={[
                         styles.categoryText,
-                        isSelected && styles.selectedCategoryText
                       ]}>
                         {category.title}
                       </Text>
@@ -414,9 +413,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: 'Codec-Pro-Bold',
     textAlign: 'center',
-  },
-  selectedCategoryText: {
-    color: '#0066FF',
   },
   section: {
     marginBottom: 30,

@@ -66,33 +66,35 @@ export default function MasterHomepage() {
 
         {/* Stats Section */}
         <View style={styles.statsSection}>
-          {/* Team Block */}
-          <View style={styles.statsBlock}>
-            <Text style={styles.blockLabel}>Ваша команда:</Text>
-            <LinearGradient
-              colors={['#0066FF', '#4A9EFF']}
-              style={styles.blockValueGradient}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-            >
-              <Text style={styles.blockValueText}>{teamCount} человек</Text>
-            </LinearGradient>
-          </View>
-
-          {/* Invited/Earnings Block */}
-          <View style={styles.statsBlock}>
-            <View style={styles.blockRow}>
-              <Text style={styles.blockLabel}>Приглашено:</Text>
-              <Text style={styles.blockValue}>{invitedCount} друг</Text>
+          <View style={styles.statsRow}>
+            {/* Left Block - Team */}
+            <View style={styles.statsBlock}>
+              <Text style={styles.blockLabel}>Ваша команда:</Text>
+              <LinearGradient
+                colors={['#0066FF', '#4A9EFF']}
+                style={styles.blockValueGradient}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+              >
+                <Text style={styles.blockValueText}>{teamCount} человек</Text>
+              </LinearGradient>
             </View>
-            <LinearGradient
-              colors={['#0066FF', '#4A9EFF']}
-              style={styles.blockValueGradient}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-            >
-              <Text style={styles.blockValueText}>Заработано: € {earnings}</Text>
-            </LinearGradient>
+
+            {/* Right Block - Invited/Earnings */}
+            <View style={styles.statsBlock}>
+              <View style={styles.blockRow}>
+                <Text style={styles.blockLabel}>Приглашено:</Text>
+                <Text style={styles.blockValue}>{invitedCount} друг</Text>
+              </View>
+              <LinearGradient
+                colors={['#0066FF', '#4A9EFF']}
+                style={styles.blockValueGradient}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+              >
+                <Text style={styles.blockValueText}>Заработано: € {earnings}</Text>
+              </LinearGradient>
+            </View>
           </View>
         </View>
 
@@ -184,9 +186,13 @@ const styles = StyleSheet.create({
   statsSection: {
     paddingHorizontal: 24,
     marginBottom: 30,
+  },
+  statsRow: {
+    flexDirection: 'row',
     gap: 15,
   },
   statsBlock: {
+    flex: 1,
     backgroundColor: '#1a1a1a',
     borderRadius: 20,
     padding: 20,

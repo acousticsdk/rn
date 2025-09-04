@@ -77,7 +77,7 @@ export default function MasterHomepage() {
 
             {/* Right Block - Invited/Earnings */}
             <View style={styles.statsBlock}>
-              <View style={styles.invitedPlaque}>
+              <View style={styles.firstEarningsPlaque}>
                 <Text style={styles.blockValueText}>Заработано: € {earnings}</Text>
               </View>
               <LinearGradient
@@ -225,6 +225,14 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     paddingVertical: 12,
     paddingHorizontal: 15,
+    backgroundColor: '#131313',
+    marginBottom: 10,
+  },
+  firstEarningsPlaque: {
+    borderRadius: 25,
+    paddingVertical: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#131313',
     marginBottom: 10,
   },

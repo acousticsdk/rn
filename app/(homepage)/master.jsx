@@ -336,7 +336,7 @@ const styles = StyleSheet.create({
   },
   blockValueText: {
     color: '#FFFFFF',
-    fontSize: 11,
+    fontSize: 14,
     fontFamily: 'Codec-Pro-Bold',
     textAlign: 'center',
   },

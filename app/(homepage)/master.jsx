@@ -12,6 +12,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { MessageCircle, Store, Wallet, User } from 'lucide-react-native';
+import { BlurView } from 'expo-blur';
 import HomeIcon from '@/components/ui/HomeIcon';
 import ChatIcon from '@/components/ui/ChatIcon';
 import MarketplaceIcon from '@/components/ui/MarketplaceIcon';
@@ -77,7 +78,9 @@ export default function MasterHomepage() {
           />
           {/* Greeting - moved to bottom left */}
           <View style={styles.greetingContainerBottomLeft}>
-            <Text style={styles.greeting}>Привет, {userName}!</Text>
+            <BlurView intensity={20} style={styles.blurBackground}>
+              <Text style={styles.greeting}>Привет, {userName}!</Text>
+            </BlurView>
           </View>
         </View>
 
@@ -241,10 +244,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 20,
     left: 20,
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
     borderRadius: 25,
+    overflow: 'hidden',
+  },
+  blurBackground: {
     paddingHorizontal: 30,
     paddingVertical: 15,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
   },
   greeting: {
     color: '#FFFFFF',

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Твоя личная команда под 0% ��омиссии</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', 'Inter', monospace;
+            background-color: #070707;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Container styles */
+        .container {
+            min-height: 100vh;
+            width: 100%;
+            background-color: #070707;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background image */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .background img {
+            position: absolute;
+            top: 56px;
+            left: -240px;
+            width: 1592px;
+            height: 1136px;
+            object-fit: cover;
+        }
+
+        /* Main content */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 0 24px;
+        }
+
+        /* Text content */
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 64px;
+            max-width: 896px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Title container */
+        .title-container {
+            position: relative;
+        }
+
+        .main-title {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .title-white {
+            color: white;
+        }
+
+        .title-gradient {
+            background: linear-gradient(88deg, #28CEFF 5.08%, #FFF 88.57%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glowing text effect */
+        .text-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            filter: blur(73.15px);
+            mix-blend-mode: plus-lighter;
+        }
+
+        /* Subtitle */
+        .subtitle {
+            color: #787878;
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1;
+            max-width: 512px;
+            margin-top: 16px;
+            font-family: 'Orbitron', monospace;
+        }
+
+        /* Button container */
+        .button-container {
+            position: relative;
+        }
+
+        .main-button {
+            position: relative;
+            z-index: 10;
+            background: linear-gradient(90deg, #03F 0%, #06F 100%);
+            border: 2px solid rgba(255, 255, 255, 0.46);
+            border-radius: 98px;
+            padding: 24px 48px;
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-family: 'Orbitron', monospace;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .main-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Button glow effect */
+        .button-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(0, 51, 255, 0.53) 0%, rgba(0, 102, 255, 0.53) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.46);
+            border-radius: 98px;
+            padding: 24px 48px;
+            filter: blur(150px);
+            mix-blend-mode: plus-lighter;
+            pointer-events: none;
+        }
+
+        .button-glow span {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            font-family: 'Orbitron', monospace;
+        }
+
+        /* Responsive styles */
+        @media (min-width: 768px) {
+            .main-title {
+                font-size: 48px;
+            }
+            
+            .subtitle {
+                font-size: 24px;
+            }
+            
+            .main-button, .button-glow span {
+                font-size: 32px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .main-content {
+                padding: 0 64px;
+            }
+            
+            .background img {
+                left: 0;
+                top: 80px;
+                width: 100%;
+                height: auto;
+                max-width: none;
+            }
+            
+            .main-title {
+                font-size: 56px;
+            }
+            
+            .subtitle {
+                font-size: 32px;
+            }
+            
+            .main-button {
+                padding: 32px 96px;
+                font-size: 48px;
+            }
+            
+            .button-glow {
+                padding: 32px 96px;
+            }
+            
+            .button-glow span {
+                font-size: 48px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .main-title {
+                font-size: 74px;
+            }
+            
+            .subtitle {
+                font-size: 40px;
+            }
+            
+            .main-button, .button-glow span {
+                font-size: 64px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Background Image -->
+        <div class="background">
+            <img src="https://api.builder.io/api/v1/image/assets/TEMP/7e77666b329dfa47334ef523384197e486e16a57?width=3184" 
+                 alt="Background with stylized faces">
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Text Content -->
+            <div class="text-content">
+                <!-- Main Title -->
+                <div class="title-container">
+                    <h1 class="main-title">
+                        <span class="title-white">Твоя личная команда </span>
+                        <span class="title-gradient">под 0% комиссии</span>
+                    </h1>
+                    <!-- Glowing text effect -->
+                    <div class="text-glow">
+                        <h1 class="main-title title-gradient">
+                            <span class="title-white">Твоя личная команда </span>
+                            <span class="title-gradient">под 0% комиссии</span>
+                        </h1>
+                    </div>
+                </div>
+
+                <!-- Subtitle -->
+                <p class="subtitle">
+                    Плати 0% наценки за свою команду по продвижению
+                </p>
+            </div>
+
+            <!-- Button -->
+            <div class="button-container">
+                <!-- Main Button -->
+                <button class="main-button">
+                    продолжить
+                </button>
+                
+                <!-- Glowing Button Effect -->
+                <div class="button-glow">
+                    <span>продолжить</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

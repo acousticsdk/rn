@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
   },
   blockValueText: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: 11,
     fontFamily: 'Codec-Pro-Bold',
     textAlign: 'center',
   },

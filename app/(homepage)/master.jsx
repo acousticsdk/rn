@@ -247,6 +247,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#131313',
     borderWidth: 1,
     borderColor: '#333333',
+    width: '100%',
   },
   firstEarningsText: {
     color: '#FFFFFF',

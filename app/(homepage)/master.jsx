@@ -16,6 +16,7 @@ import HomeIcon from '@/components/ui/HomeIcon';
 import ChatIcon from '@/components/ui/ChatIcon';
 import MarketplaceIcon from '@/components/ui/MarketplaceIcon';
 import WalletIcon from '@/components/ui/WalletIcon';
+import ProfileIcon from '@/components/ui/ProfileIcon';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -191,7 +192,7 @@ export default function MasterHomepage() {
             style={styles.tabItem}
             onPress={() => handleTabPress('profile')}
           >
-            <User size={24} color="#666666" />
+            <ProfileIcon size={24} color="#666666" />
           </TouchableOpacity>
         </View>
       </View>

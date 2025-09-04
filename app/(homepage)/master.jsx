@@ -232,6 +232,8 @@ export default function MasterHomepage() {
 }
 
 const styles = StyleSheet.create({
+          }
+  )
   safeArea: {
     flex: 1,
     backgroundColor: '#070707',

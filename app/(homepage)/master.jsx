@@ -103,16 +103,14 @@ export default function MasterHomepage() {
         {/* Build Team Button */}
         <View style={styles.buildTeamContainer}>
           <TouchableOpacity style={styles.buildTeamButton} onPress={handleBuildTeam}>
-            <View style={styles.invitedPlaque}>
-              <LinearGradient
-                colors={['#0066FF', '#4A9EFF']}
-                style={styles.blockValueGradient}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 0 }}
-              >
-                <Text style={styles.blockValueText}>Заработано: € {earnings}</Text>
-              </LinearGradient>
-            </View>
+            <LinearGradient
+              colors={['#0066FF', '#4A9EFF']}
+              style={styles.buildTeamGradient}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+            >
+              <Text style={styles.buildTeamText}>СОБРАТЬ КОМАНДУ</Text>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
 

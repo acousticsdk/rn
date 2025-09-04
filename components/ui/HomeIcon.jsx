@@ -5,7 +5,7 @@ export default function HomeIcon({ size = 24, color = '#9DB2CE' }) {
   return (
     <Svg width={size} height={size} viewBox="0 0 52 52" fill="none">
       <Defs>
-        <Mask id="mask0_259_977" maskType="luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="53" height="52">
+        <Mask id="mask0_259_977" masktype="luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="53" height="52">
           <Path d="M52.001 0H0.000976562V52H52.001V0Z" fill="white"/>
         </Mask>
       </Defs>

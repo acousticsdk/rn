@@ -250,6 +250,14 @@ export default function MarketplaceScreen() {
                         ]}
                         onPress={() => handleCategorySelect(category.id)}
                       >
+                        {isSelected && (
+                          <LinearGradient
+                            colors={['#0B5BFE', '#08A1FF']}
+                            style={styles.categoryGradient}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 1 }}
+                          />
+                        )}
                         <IconComponent 
                           size={24} 
                          color="#FFFFFF"

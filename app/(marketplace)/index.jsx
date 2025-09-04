@@ -457,35 +457,4 @@ const styles = StyleSheet.create({
   },
   userName: {
     color: '#FFFFFF',
-    fontSize: 18,
-    fontFamily: 'Codec-Pro-Bold',
-    marginBottom: 8,
-  },
-  userActions: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  specializationTag: {
-    backgroundColor: '#0066FF',
-    borderRadius: 12,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-  },
-  specializationText: {
-    color: '#FFFFFF',
-    fontSize: 12,
-    fontFamily: 'Codec-Pro-Bold',
-  },
-  hireButton: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-  },
-  hireButtonText: {
-    color: '#000000',
-    fontSize: 14,
-    fontFamily: 'Codec-Pro-Bold',
-  },
 });

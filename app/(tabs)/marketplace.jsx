@@ -224,6 +224,8 @@ export default function MarketplaceScreen() {
                 </Text>
               </TouchableOpacity>
             ))}
+          </View>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
@@ -449,4 +451,5 @@ const styles = StyleSheet.create({
   },
   userName: {
     color: '#FFFFFF',
+  },
 });

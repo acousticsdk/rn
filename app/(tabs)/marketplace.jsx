@@ -235,31 +235,19 @@ export default function MarketplaceScreen() {
             {CATEGORIES.map((category) => {
               const IconComponent = category.icon;
               return (
-                <View key={category.id}>
-                  <TouchableOpacity
-                    style={[
-                      styles.categoryItem,
-                      selectedCategory === category.id && styles.selectedCategory
-                    ]}
-                    onPress={() => handleCategorySelect(category.id)}
-                  >
-                    <View style={[
-                      styles.categoryIcon,
-                      selectedCategory === category.id && { backgroundColor: '#FFFFFF' }
-                    ]}>
-                      <IconComponent 
-                        size={24} 
-                        color={selectedCategory === category.id ? '#0066FF' : '#FFFFFF'} 
-                      />
-                    </View>
-                  </TouchableOpacity>
-                  <Text style={[
-                    styles.categoryText,
-                    selectedCategory === category.id && { color: '#0066FF' }
-                  ]}>
-                    {category.title}
-                  </Text>
-                </View>
+                <TouchableOpacity
+                  key={category.id}
+                  style={[
+                    styles.categoryItem,
+                    selectedCategory === category.id && styles.selectedCategory
+                  ]}
+                  onPress={() => handleCategorySelect(category.id)}
+                >
+                  <View style={styles.categoryIcon}>
+                    <IconComponent size={20} color="#FFFFFF" />
+                  </View>
+                  <Text style={styles.categoryText}>{category.title}</Text>
+                </TouchableOpacity>
               );
             })}
           </View>
@@ -385,10 +373,18 @@ const styles = StyleSheet.create({
     fontFamily: 'Codec-Pro-Bold',
   },
   categoriesContainer: {
-    flexDirection: 'row',
     paddingHorizontal: 24,
     marginBottom: 20,
-    gap: 12,
+  },
+  categoriesGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 16,
+  },
+  categoryWrapper: {
+    width: (screenWidth - 48 - 48) / 4, // (screenWidth - padding - gaps) / 4
+    alignItems: 'center',
+    gap: 8,
   },
   categoryItem: {
     flex: 1,

@@ -70,9 +70,14 @@ export default function MasterHomepage() {
             {/* Left Block - Team */}
             <View style={styles.statsBlock}>
               <Text style={styles.blockLabel}>Ваша команда:</Text>
-              <View style={styles.blockValuePlain}>
+              <LinearGradient
+                colors={['#0066FF', '#4A9EFF']}
+                style={styles.blockValueGradient}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+              >
                 <Text style={styles.blockValueText}>{teamCount} человек</Text>
-              </View>
+              </LinearGradient>
             </View>
 
             {/* Right Block - Invited/Earnings */}
@@ -223,13 +228,6 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontFamily: 'Codec-Pro-Bold',
     textAlign: 'center',
-  },
-  blockValuePlain: {
-    backgroundColor: '#131313',
-    borderRadius: 25,
-    paddingVertical: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   invitedPlaque: {
     borderWidth: 1,

@@ -78,9 +78,11 @@ export default function MasterHomepage() {
           />
           {/* Greeting - moved to bottom left */}
           <View style={styles.greetingContainerBottomLeft}>
-            <BlurView intensity={20} style={styles.blurBackground}>
-              <Text style={styles.greeting}>Привет, {userName}!</Text>
-            </BlurView>
+            <View style={styles.greetingWrapper}>
+              <BlurView intensity={20} style={styles.blurBackground}>
+                <Text style={styles.greeting}>Привет, {userName}!</Text>
+              </BlurView>
+            </View>
           </View>
         </View>
 
@@ -244,6 +246,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 20,
     left: 20,
+  },
+  greetingWrapper: {
     borderRadius: 25,
     overflow: 'hidden',
   },

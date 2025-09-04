@@ -66,25 +66,27 @@ export default function MasterHomepage() {
 
         {/* Stats Section */}
         <View style={styles.statsSection}>
-          <Text style={styles.statsTitle}>Ваша команда:</Text>
-          
           <View style={styles.statsRow}>
             {/* Team Count */}
-            <View style={styles.statCard}>
+            <View style={styles.leftStatsContainer}>
+              <View style={styles.teamTitleCard}>
+                <Text style={styles.teamTitle}>Ваша команда:</Text>
+              </View>
+              
               <LinearGradient
                 colors={['#0066FF', '#4A9EFF']}
-                style={styles.statGradient}
+                style={styles.teamCountGradient}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
               >
-                <Text style={styles.statNumber}>{teamCount} человек</Text>
+                <Text style={styles.teamCountText}>{teamCount} человек</Text>
               </LinearGradient>
             </View>
 
             {/* Invited/Earnings Stats */}
             <View style={styles.rightStatsContainer}>
-              <View style={styles.invitedCard}>
-                <Text style={styles.invitedLabel}>Приглашено:</Text>
+              <View style={styles.invitedTitleCard}>
+                <Text style={styles.invitedTitle}>Приглашено:</Text>
                 <Text style={styles.invitedValue}>{invitedCount} друг</Text>
               </View>
               
@@ -192,28 +194,36 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     marginBottom: 30,
   },
-  statsTitle: {
-    color: '#787878',
-    fontSize: 16,
-    fontFamily: 'Codec-Pro-Bold',
-    marginBottom: 15,
-  },
   statsRow: {
     flexDirection: 'row',
     gap: 15,
   },
-  statCard: {
+  leftStatsContainer: {
     flex: 1,
-    borderRadius: 25,
-    overflow: 'hidden',
+    gap: 10,
   },
-  statGradient: {
+  teamTitleCard: {
+    backgroundColor: '#1a1a1a',
+    borderRadius: 20,
+    paddingHorizontal: 15,
+    paddingVertical: 12,
+    borderWidth: 1,
+    borderColor: '#333333',
+  },
+  teamTitle: {
+    color: '#787878',
+    fontSize: 12,
+    fontFamily: 'Codec-Pro-News',
+    textAlign: 'center',
+  },
+  teamCountGradient: {
+    borderRadius: 25,
     paddingHorizontal: 20,
     paddingVertical: 15,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  statNumber: {
+  teamCountText: {
     color: '#FFFFFF',
     fontSize: 16,
     fontFamily: 'Codec-Pro-Bold',
@@ -223,7 +233,7 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: 10,
   },
-  invitedCard: {
+  invitedTitleCard: {
     backgroundColor: '#1a1a1a',
     borderRadius: 20,
     paddingHorizontal: 15,
@@ -234,7 +244,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  invitedLabel: {
+  invitedTitle: {
     color: '#787878',
     fontSize: 12,
     fontFamily: 'Codec-Pro-News',

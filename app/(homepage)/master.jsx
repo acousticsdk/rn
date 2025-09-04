@@ -14,6 +14,7 @@ import { router } from 'expo-router';
 import { MessageCircle, Store, Wallet, User } from 'lucide-react-native';
 import HomeIcon from '@/components/ui/HomeIcon';
 import ChatIcon from '@/components/ui/ChatIcon';
+import MarketplaceIcon from '@/components/ui/MarketplaceIcon';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -173,7 +174,7 @@ export default function MasterHomepage() {
             style={styles.tabItem}
             onPress={() => handleTabPress('marketplace')}
           >
-            <Store size={24} color="#666666" />
+            <MarketplaceIcon size={24} color="#666666" />
           </TouchableOpacity>
 
           {/* Wallet Tab */}

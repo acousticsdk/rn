@@ -100,11 +100,6 @@ export default function MarketplaceScreen() {
     router.push(`/(chat)/conversation/${userId}`);
   };
 
-  const handleAITeamBuilder = () => {
-    // TODO: Логика ИИ сбора команды
-    console.log('ИИ сбор команды');
-  };
-
   const renderUserCard = ({ item, index }) => {
     const isSecond = index === 1;
     
@@ -233,6 +228,51 @@ export default function MarketplaceScreen() {
               {showCategories ? (
                 <ChevronUp size={20} color="#FFFFFF" />
               ) : (
+                <ChevronDown size={20} color="#FFFFFF" />
+              )}
+            </TouchableOpacity>
+          </View>
+
+          {/* Categories Section */}
+          <View style={styles.categoriesSection}>
+            <View style={styles.categoriesContainer}>
+              <View style={styles.categoriesGrid}>
+                {categoriesToShow.map((category) => {
+                  const IconComponent = category.icon;
+                  const isSelected = selectedCategory === category.id;
+                  
+                  return (
+                    <View key={category.id} style={styles.categoryColumn}>
+                      <TouchableOpacity
+                        style={[
+                          styles.categoryItem,
+                          isSelected && styles.selectedCategory
+                        ]}
+                        onPress={() => handleCategorySelect(category.id)}
+                      >
+                        <IconComponent 
+                          size={24} 
+                          color={isSelected ? "#0066FF" : "#FFFFFF"} 
+                        />
+                      </TouchableOpacity>
+                      <Text style={[
+                        styles.categoryText,
+                        isSelected && styles.selectedCategoryText
+                      ]}>
+                        {category.title}
+                      </Text>
+                    </View>
+                  );
+                })}
+              </View>
+            </View>
+          </View>
+
+          {/* Sections */}
+          {renderSection('ТОП 100К', top100kExpanded, () => setTop100kExpanded(!top100kExpanded), MOCK_USERS)}
+          {renderSection('РЕЙТИНГ', ratingExpanded, () => setRatingExpanded(!ratingExpanded), MOCK_USERS)}
+        </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
@@ -457,4 +497,35 @@ const styles = StyleSheet.create({
   },
   userName: {
     color: '#FFFFFF',
+    fontSize: 18,
+    fontFamily: 'Codec-Pro-Bold',
+    marginBottom: 8,
+  },
+  userActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  specializationTag: {
+    backgroundColor: '#0066FF',
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  specializationText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontFamily: 'Codec-Pro-Bold',
+  },
+  hireButton: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  hireButtonText: {
+    color: '#000000',
+    fontSize: 14,
+    fontFamily: 'Codec-Pro-Bold',
+  },
 });

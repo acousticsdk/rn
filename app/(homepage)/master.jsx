@@ -21,11 +21,36 @@ import ProfileIcon from '@/components/ui/ProfileIcon';
 
 const { width: screenWidth } = Dimensions.get('window');
 
-// Глобальные переменные для интеграции с бекендом
-let HOMEPAGE_USER_NAME = 'Mikhail';
-let HOMEPAGE_TEAM_COUNT = 0;
-let HOMEPAGE_INVITED_COUNT = 1;
-let HOMEPAGE_EARNINGS = 1000;
+// ========================================
+// ДАННЫЕ ДЛЯ ИНТЕГРАЦИИ С БЕКЕНДОМ
+// ========================================
+
+// Глобальные переменные для главной страницы мастера
+// Обновляются при получении данных с сервера
+let HOMEPAGE_USER_NAME = 'Mikhail';        // Имя пользователя
+let HOMEPAGE_TEAM_COUNT = 0;               // Количество людей в команде
+let HOMEPAGE_INVITED_COUNT = 1;            // Количество приглашенных друзей
+let HOMEPAGE_EARNINGS = 1000;              // Заработанная сумма в евро
+
+// Функции для обновления данных с бекенда
+const updateHomepageData = (userData) => {
+  HOMEPAGE_USER_NAME = userData.name || 'Mikhail';
+  HOMEPAGE_TEAM_COUNT = userData.teamCount || 0;
+  HOMEPAGE_INVITED_COUNT = userData.invitedCount || 1;
+  HOMEPAGE_EARNINGS = userData.earnings || 1000;
+};
+
+// Функция для получения текущих данных
+const getHomepageData = () => ({
+  userName: HOMEPAGE_USER_NAME,
+  teamCount: HOMEPAGE_TEAM_COUNT,
+  invitedCount: HOMEPAGE_INVITED_COUNT,
+  earnings: HOMEPAGE_EARNINGS
+});
+
+// ========================================
+// КОМПОНЕНТ ГЛАВНОЙ СТРАНИЦЫ МАСТЕРА
+// ========================================
 
 export default function MasterHomepage() {
   const [userName] = useState(HOMEPAGE_USER_NAME);

@@ -71,7 +71,7 @@ export default function MasterHomepage() {
             <View style={styles.statsBlock}>
               <Text style={styles.teamLabel}>Ваша команда:</Text>
               <LinearGradient
-                colors={['#0066FF', '#4A9EFF']}
+                colors={['#023CFE', '#027EFD']}
                 style={styles.blockValueGradient}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
@@ -89,7 +89,7 @@ export default function MasterHomepage() {
                 </Text>
               </View>
               <LinearGradient
-                colors={['#0066FF', '#4A9EFF']}
+                colors={['#023CFE', '#027EFD']}
                 style={styles.blockValueGradient}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
@@ -104,7 +104,7 @@ export default function MasterHomepage() {
         <View style={styles.buildTeamContainer}>
           <TouchableOpacity style={styles.buildTeamButton} onPress={handleBuildTeam}>
             <LinearGradient
-              colors={['#0066FF', '#4A9EFF']}
+              colors={['#023CFE', '#027EFD']}
               style={styles.buildTeamGradient}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}

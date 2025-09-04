@@ -234,63 +234,6 @@ export default function MarketplaceScreen() {
               <Text style={styles.categoriesTitle}>Выбрать категорию</Text>
               <ChevronDown size={20} color="#FFFFFF" />
             </TouchableOpacity>
-
-            {showCategories && (
-              <View style={styles.categoriesContainer}>
-                <View style={styles.categoriesRow}>
-                  {CATEGORIES.slice(0, 4).map((category) => (
-                    <TouchableOpacity
-                      key={category.id}
-                      style={styles.categoryColumn}
-                      onPress={() => handleCategorySelect(category.id)}
-                    >
-                      <View style={[
-                        styles.categoryItem,
-                        selectedCategory === category.id && styles.selectedCategory
-                      ]}>
-                        <category.icon 
-                          size={32} 
-                          color={selectedCategory === category.id ? "#0066FF" : "#FFFFFF"} 
-                        />
-                      </View>
-                      <Text style={[
-                        styles.categoryText,
-                        selectedCategory === category.id && styles.selectedCategoryText
-                      ]}>
-                        {category.title}
-                      </Text>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-                
-                <View style={styles.categoriesRow}>
-                  {CATEGORIES.slice(4, 8).map((category) => (
-                    <TouchableOpacity
-                      key={category.id}
-                      style={styles.categoryColumn}
-                      onPress={() => handleCategorySelect(category.id)}
-                    >
-                      <View style={[
-                        styles.categoryItem,
-                        selectedCategory === category.id && styles.selectedCategory
-                      ]}>
-                        <category.icon 
-                          size={32} 
-                          color={selectedCategory === category.id ? "#0066FF" : "#FFFFFF"} 
-                        />
-                      </View>
-                      <Text style={[
-                        styles.categoryText,
-                        selectedCategory === category.id && styles.selectedCategoryText
-                      ]}>
-                        {category.title}
-                      </Text>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-              </View>
-            )}
-          </View>
           </View>
 
           {/* AI Team Builder Button */}
@@ -308,10 +251,6 @@ export default function MarketplaceScreen() {
           {renderSection('ТОП 100К', top100kExpanded, () => setTop100kExpanded(!top100kExpanded), MOCK_USERS)}
           {renderSection('РЕЙТИНГ', ratingExpanded, () => setRatingExpanded(!ratingExpanded), MOCK_USERS)}
         </ScrollView>
-      </View>
-    </SafeAreaView>
-  );
-}
       </View>
     </SafeAreaView>
   );

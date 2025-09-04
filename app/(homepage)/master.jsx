@@ -69,7 +69,9 @@ export default function MasterHomepage() {
           <View style={styles.statsRow}>
             {/* Left Block - Team */}
             <View style={styles.statsBlock}>
-              <Text style={styles.blockLabel}>Ваша команда:</Text>
+              <View style={styles.teamLabelContainer}>
+                <Text style={styles.teamLabel}>Ваша команда:</Text>
+              </View>
               <LinearGradient
                 colors={['#0066FF', '#4A9EFF']}
                 style={styles.blockValueGradient}
@@ -278,5 +280,16 @@ const styles = StyleSheet.create({
   },
   bottomSpacing: {
     height: 20,
+  },
+  teamLabelContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  teamLabel: {
+    color: '#787878',
+    fontSize: 16,
+    fontFamily: 'Codec-Pro-Bold',
+    textAlign: 'center',
   },
 });
